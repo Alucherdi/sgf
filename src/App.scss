@@ -1,0 +1,9 @@
+.test {
+	background-color: red;
+	.test2 {
+		background-color: blue;
+		&:hover {
+			background: green;
+		}
+	}
+}
