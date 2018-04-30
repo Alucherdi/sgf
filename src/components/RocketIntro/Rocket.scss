@@ -1,0 +1,77 @@
+$titlePadding: 30px;
+
+.home {
+	width: 100vw;
+	height: 100vh;
+	background-position: center;
+
+	.title {
+		font-family: 'Roboto', sans-serif;
+		color: white;
+		font-size: 80px;
+		padding-top: $titlePadding;
+
+		text-align: center;
+		animation: titleAppear 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+		@media screen and (max-width: 500px) {
+			font-size: 30px;
+		}
+	}
+
+	#banner {
+		position: absolute;
+		bottom: 0;
+		overflow-x: scroll;
+		overflow-y: hidden;
+		width: 100%;
+	}
+
+	.options {
+		padding-top: 50px;
+		width: 60%;
+		height: 40%;
+		margin: auto;
+
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+
+		.option {
+			width: 20%;
+			height: 100%;
+			background-color: black;
+			opacity: 0.5;
+			color: rgba(255, 255, 255, 0);
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			
+			
+			font-size: 70px;
+			font-style: italic;
+			transition: all 0.2s cubic-bezier(0.215, 0.610, 0.355, 1);
+
+			&:hover {
+				opacity: 1;
+				color: rgba(255, 255, 255, 1);
+				width: 40%;
+			}
+		}
+
+		
+	}
+}
+
+@keyframes titleAppear {
+	0% {
+		opacity: 0;
+		padding-top: $titlePadding + 30px;
+	}
+
+	100% {
+		opacity: 1;
+		padding-top: $titlePadding;
+	}
+}
