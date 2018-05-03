@@ -1,0 +1,31 @@
+.userData {
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	.userDataTitle {
+		text-align: center;
+		margin-bottom: 10px;
+		font-size: 20px;
+	}
+
+	form {
+		width: 50%;
+
+		input {
+			width: 100%;
+			background-color: #a5c8ff;
+
+			padding: 16px 14px 16px 14px;
+
+			outline: none;
+			border: none;
+			
+			margin-bottom: 10px
+		}
+	}
+}

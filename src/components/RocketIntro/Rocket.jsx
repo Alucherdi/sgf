@@ -1,7 +1,14 @@
 import React from "react"
+
 import background from "./background.png"
+import axtelBanner from "./AxtelBanner.png"
+import newsBanner from "./NewsBanner.png"
+import storeBanner from "./StoreBanner.png"
 import banner from "./banner.png"
+
 import "./Rocket.scss"
+
+import { Link } from "react-router-dom"
 
 class Rocket extends React.Component {
 	render() {
@@ -11,13 +18,13 @@ class Rocket extends React.Component {
 					<div className="title">Space Gaming</div>
 
 					<div className="options">
-						<div className="option">News</div>
-						<div className="option">Axtel</div>
-						<div className="option">Store</div>
+						<Link to="/" className="option" style={{backgroundImage: `url(${newsBanner}`}}>News</Link>
+						<Link to="/axtel" className="option" style={{backgroundImage: `url(${axtelBanner}`}}>Axtel</Link>
+						<Link to="/" className="option" style={{backgroundImage: `url(${storeBanner}`}}>Store</Link>
 					</div>
 					
 					<div id="banner">
-						<img src={banner} />
+						<img src={banner} alt=""/>
 					</div>
 				</div>
 			</div>
