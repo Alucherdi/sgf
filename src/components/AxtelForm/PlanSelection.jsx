@@ -12,16 +12,23 @@ class PlanSelection extends React.Component {
 			el.classList.add("selected")
 			var other = el.nextSibling == null ? el.previousSibling : el.nextSibling
 			other.classList.remove("selected")
+			this.props.userDataFiller((prev) => {
+				prev.userData.planSelection = el.getAttribute("plan-type")
+				prev.userData.velocitySelection = {}
+				return prev
+			})
 		}
 
 		return (
 			<div className="plan">
-				<div className="option shadow" onClick={selectOption}>
+				<div className={"option shadow " + (this.props.userData.planSelection === 'internet' ? 'selected' : '')} onClick={selectOption} plan-type="internet">
 					<span className="planTitle">Internet</span>
-					<img src={internetPlanImage} alt=""/>
-					<span className="planPrice">Desde $449</span>
+					<div className="planInformation">
+						<img src={internetPlanImage} alt=""/>
+						<span className="planPrice">Desde $449</span>
+					</div>
 				</div>
-				<div className="option shadow" onClick={selectOption}>
+				<div className={"option shadow " + (this.props.userData.planSelection === 'tv' ? 'selected' : '')} onClick={selectOption} plan-type="tv">
 					<span className="planTitle">Internet y TV</span>
 					<img src={tvPlanImage} alt=""/>
 					<span className="planPrice">Desde $629</span>

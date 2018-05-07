@@ -1,6 +1,7 @@
 .axtelForm {
 	width: 100vw;
 	height: 80vh;
+	background-color: #f1f1f1;
 }
 
 .center {
@@ -12,6 +13,27 @@
 .axtelResume {
 	width: 100vw;
 	height: 20vh;
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+
+	.velResume {
+		width: 200px;
+		text-align: center;
+		margin-left: 16px;
+		.vel {
+			color: red;
+			font-weight: bold;
+			font-size: 38px;
+
+		}
+
+		.price {
+			font-size: 50px;
+		}
+	}
 }
 
 .shadow {

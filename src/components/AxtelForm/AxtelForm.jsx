@@ -9,6 +9,9 @@ import Resume from "./Resume"
 import leftImage from "./Assets/leftImage.png"
 import rightImage from "./Assets/rightImage.png"
 
+import internetPlanImage from "./Assets/internet.png"
+import tvPlanImage from "./Assets/tv.png"
+
 import "./AxtelForm.scss"
 import "./Navigation.scss"
 
@@ -19,17 +22,77 @@ class AxtelForm extends React.Component {
 		this.state = {
 			actualView: 0,
 			views: [
-				<PlanSelection />,
-				<Velocity />,
-				<UserData />,
-				<References />,
-				<Resume />
-			]
+			],
+			userData: {
+				planSelection: "internet",
+				velocitySelection: {
+					velId: "",
+					priceId: "",
+					priceMb: "",
+					priceNormalPrice: ""
+				}, 
+				userInfo: {
+					nombre: "",
+					apellido: "",
+					fechaNac: "",
+					direccion: "",
+					telefono: "",
+					email: ""
+				},
+				references: [
+					{
+						nombre: "",
+						apellido: "",
+						telefono: "",
+						email: ""
+					},
+					{
+						nombre: "",
+						apellido: "",
+						telefono: "",
+						email: ""
+					}
+				]
+			}
 		}
 	}
+
+	userDataFiller = (newData) => {
+		this.setState(newData)
+		this.refreshUserData()
+	}
+
+	refreshUserData = () => {
+		this.setState((prev) => {
+			var newViews = {
+				views: [
+					<PlanSelection userDataFiller={this.userDataFiller} userData={prev.userData}/>,
+					<Velocity userDataFiller={this.userDataFiller} userData={prev.userData}/>,
+					<UserData userDataFiller={this.userDataFiller} userData={prev.userData}/>,
+					<References userDataFiller={this.userDataFiller} userData={prev.userData}/>,
+					<Resume userDataFiller={this.userDataFiller} userData={prev.userData}/>
+				]
+			}
+
+			return newViews
+		})
+	}
+
+	componentDidMount = () => {
+		this.refreshUserData()
+	}
 	
-	render() {		
+	render() {	
+		
+		console.log(this.state.userData.planSelection)
+		
+		var mb = this.state.userData.velocitySelection.priceMb
+		var price = this.state.userData.velocitySelection.priceNormalPrice
+
 		return (
+
+			
+			
 			<div>
 				<div className="axtelForm">
 					<div className="left" onClick={() => {this.navigate(-1)}}>
@@ -41,9 +104,29 @@ class AxtelForm extends React.Component {
 					</div>
 				</div>
 
-				<div className="axtelResume"></div>
+				<div className="axtelResume">
+					<div className="planResume">
+						<img src={this.renderPlanImage()} alt=""/>
+					</div>
+					{price ? 
+						<div className="velResume">
+							<div className="vel">{mb}Mbps</div>
+							<div className="price">${price}</div>
+						</div> : 
+					""}
+					
+				</div>
 			</div>
 		)
+	}
+
+	renderPlanImage = () => {
+		var m = {
+			"tv": tvPlanImage,
+			"internet": internetPlanImage
+		}
+
+		return m[this.state.userData.planSelection]
 	}
 
 	navigate = (offset) => {
