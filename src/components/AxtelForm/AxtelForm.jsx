@@ -1,10 +1,12 @@
 import React from "react"
+import moment from "moment"
 
 import PlanSelection from "./PlanSelection"
 import Velocity from "./Velocity"
 import UserData from "./UserData"
-import References from "./References"
-import Resume from "./Resume"
+//import References from "./References"
+//import Resume from "./Resume"
+import MapCoverage from "./MapCoverage"
 
 import leftImage from "./Assets/leftImage.png"
 import rightImage from "./Assets/rightImage.png"
@@ -21,8 +23,7 @@ class AxtelForm extends React.Component {
 
 		this.state = {
 			actualView: 0,
-			views: [
-			],
+			views: [],
 			userData: {
 				planSelection: "internet",
 				velocitySelection: {
@@ -34,7 +35,7 @@ class AxtelForm extends React.Component {
 				userInfo: {
 					nombre: "",
 					apellido: "",
-					fechaNac: "",
+					fechaNac: moment(),
 					direccion: "",
 					telefono: "",
 					email: ""
@@ -66,11 +67,11 @@ class AxtelForm extends React.Component {
 		this.setState((prev) => {
 			var newViews = {
 				views: [
+					<MapCoverage userDataFiller={this.userDataFiller} userData={prev.userData}/>,
 					<PlanSelection userDataFiller={this.userDataFiller} userData={prev.userData}/>,
 					<Velocity userDataFiller={this.userDataFiller} userData={prev.userData}/>,
 					<UserData userDataFiller={this.userDataFiller} userData={prev.userData}/>,
-					<References userDataFiller={this.userDataFiller} userData={prev.userData}/>,
-					<Resume userDataFiller={this.userDataFiller} userData={prev.userData}/>
+					//<References userDataFiller={this.userDataFiller} userData={prev.userData}/>
 				]
 			}
 
@@ -83,9 +84,6 @@ class AxtelForm extends React.Component {
 	}
 	
 	render() {	
-		
-		console.log(this.state.userData.planSelection)
-		
 		var mb = this.state.userData.velocitySelection.priceMb
 		var price = this.state.userData.velocitySelection.priceNormalPrice
 

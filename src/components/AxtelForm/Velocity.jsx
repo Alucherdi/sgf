@@ -53,9 +53,7 @@ class Velocity extends React.Component {
 	render() {
 		var selectedVel = this.props.userData.velocitySelection.velId
 		var selectedPrice = this.props.userData.velocitySelection.priceId
-
-		console.log(selectedVel)
-		console.log(selectedPrice)
+		
 		return (
 			<div className="velocity">
 				{this.state.velPlans[this.props.userData.planSelection].map((velPlan, _index) => {

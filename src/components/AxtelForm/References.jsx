@@ -28,10 +28,8 @@ class References extends React.Component {
 		var el = e.currentTarget
 		var refNum = Number(el.parentElement.getAttribute("ref-num"))
 		this.props.userDataFiller((prev) => {
-			console.log(prev)
 			prev.userData.references[refNum][el.getAttribute("name")] = el.value
 
-			console.log(prev.userData.references)
 			return prev
 		})
 	}

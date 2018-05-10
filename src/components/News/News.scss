@@ -1,28 +1,27 @@
+$articleFont: 'Roboto', sans-serif;
+
 .article .header{
     width: 550px;
     margin-left: auto;
     word-wrap: break-word;
     margin-right: auto;    
     margin-top: 2%;
-    font-family: 'Geosans';    
+    font-family: $articleFont;    
     font-size: 35px;
 }
 
 .article .content{
-    width: 600px;    
+    width: 80%;    
     margin-left: auto;
-    word-wrap: break-word;
     margin-right: auto;    
-    font-family: 'Geosans';
+    font-family: $articleFont;
     color: black;  
-    font-weight: bold;  
     margin-top: -10px;
     font-size: 18px;
-    white-space: pre-wrap;
 }
 
 .article .info{
-    font-family: 'Geosans';    
+    font-family: $articleFont;    
     font-size: 13px;
     color: rgb(102, 102, 102);
     width: 550px;
@@ -35,7 +34,7 @@
 }
 
 .article .rds{
-    font-family: 'Geosans';    
+    font-family: $articleFont;    
     font-size: 13px;
     color: rgb(102, 102, 102);
     width: 550px;
@@ -48,21 +47,21 @@
 }
 
 .title{
-    font-family: 'Geosans';    
+    font-family: $articleFont;    
     font-size: 45px;
     font-weight: bold;
     text-align: center;
 }
 
 .article img{
-    width: 600px;
+    width: 80%;
     display: block;
     margin-left: auto;
     margin-right: auto
 }
 
 .article hr{        
-    width: 600px;
+    width: 80%;
     margin-top: 30px;
     margin-bottom: 60px;
     margin-left: 5%;     

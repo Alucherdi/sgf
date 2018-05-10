@@ -11,9 +11,9 @@ class Router extends Component {
 		return (
 			<BrowserRouter>
 				<Switch>
-					<Route path="/axtel" component={AxtelForm} />
-					<Route path="/news" component={News} />
-					<Route path="/" component={Home} />
+					<Route exact path="/" component={Home} />
+					<Route path={`${process.env.PUBLIC_URL}/axtel`} component={AxtelForm} />
+					<Route path={`${process.env.PUBLIC_URL}/news`} component={News} />
 				</Switch>
 			</ BrowserRouter>
 		)

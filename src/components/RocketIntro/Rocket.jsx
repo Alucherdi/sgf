@@ -5,7 +5,7 @@ import axtelBanner from "./AxtelBanner.png"
 import newsBanner from "./NewsBanner.png"
 import storeBanner from "./StoreBanner.png"
 import rocket from "./rocketGif.gif"
-import banner from "./banner.png"
+//import banner from "./banner.png"
 
 import "./Rocket.scss"
 
