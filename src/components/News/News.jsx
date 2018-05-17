@@ -14,37 +14,49 @@ class News extends React.Component {
 
 	initDB() {
 		var token = 'oUhHgt2EauAAAAAAAAAAIL7ZT6g3MU5cUjwau-ZdbEnKVzPNM8-z8UU_G2NTYlgV';
-		var Dropbox = require('dropbox').Dropbox;
-		var dbx = new Dropbox({ accessToken: token });
-		dbx.filesListFolder({ path: '/Noticias' }).then(response => {
-			response.entries.map(data => {
-				dbx.filesGetTemporaryLink({ path: data.path_display }).then(json => {
-					fetch(json.link).then(response => {
-						return response.text();
-					}).then(text => {
-						this.setState(prevState => ({
-							news: [...prevState.news, text],
-							loading: true
-						}))
-					})
-				})
-			});
-		}).catch(function (error) {
-			console.log(error);
-		});
+        var Dropbox = require('dropbox').Dropbox;
+        var dbx = new Dropbox({ accessToken: token });               
+        dbx.filesListFolder({path: '/Noticias'}).then(response =>{
+            response.entries.map( data =>{
+                dbx.filesGetMetadata({path: data.path_display}).then( metadata => {   
+                    dbx.usersGetAccount({account_id: metadata.sharing_info.modified_by}).then(response => {
+                        dbx.filesGetTemporaryLink({path: data.path_display}).then( json => {                                         
+                            fetch(json.link).then( response =>{
+                                return response.text();
+                            }).then( text => {   
+                                this.setState(prevState => ({
+                                    news: [...prevState.news, JSON.stringify({
+                                        content: text,
+                                        file_id: metadata.id,
+                                        date: metadata.client_modified,
+                                        owner_id: response.account_id,
+                                        owner_name: response.name.display_name
+                                    })],
+                                    loading: true
+                                }))
+                            })                                               
+                        })   
+                    })                          
+                })                  
+                return data;          
+            });                
+        }).catch(function(error) {
+            console.log(error);
+        });  
 	}
 
 	render() {
 		const ReactMarkdown = require('react-markdown');
 
 		var data = this.state.news.map((input, index) => {
-			return (
-				<div className="article" key={index}>
-					<ReactMarkdown className="content" escapeHtml={false} skipHtml={false} source={input} />
-					<br />
-					<hr className="lineSeparator"/>
-				</div>
-			);
+			var json = JSON.parse(input);
+            return(
+                <div className="article" key={key}>
+                    <ReactMarkdown className="content" escapeHtml={false} skipHtml={false} source={json.content} />
+                    <br/>
+                    <hr/>
+                </div>
+            );
 		})
 		if (!this.state.loading) {
 			return (
