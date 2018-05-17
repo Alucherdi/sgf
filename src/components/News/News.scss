@@ -1,6 +1,17 @@
 $articleFont: 'Roboto', sans-serif;
 
 .article{
+
+	.header{ 
+		width: 550px; 
+		margin-left: auto; 
+		word-wrap: break-word; 
+		margin-right: auto;     
+		margin-top: 2%; 
+		font-family: $articleFont;     
+		font-size: 35px; 
+	} 
+
     .content{
         width: 80%;    
         margin-left: auto;
@@ -11,6 +22,32 @@ $articleFont: 'Roboto', sans-serif;
         font-size: 18px;
     }
 
+	.info{ 
+		font-family: $articleFont;     
+		font-size: 13px; 
+		color: rgb(102, 102, 102); 
+		width: 550px; 
+		margin-left: auto; 
+		word-wrap: break-word; 
+		margin-right: auto; 
+		margin-top: -20px; 
+		margin-bottom: 20px; 
+		font-weight: bold; 
+	} 
+	
+	.rds{ 
+		font-family: $articleFont;     
+		font-size: 13px; 
+		color: rgb(102, 102, 102); 
+		width: 550px; 
+		margin-left: auto; 
+		word-wrap: break-word; 
+		margin-right: auto; 
+		margin-top: 36px;   
+		margin-bottom: -40px; 
+		font-weight: bold; 
+	}
+	
     img{
         width: 80%;
         display: block;
