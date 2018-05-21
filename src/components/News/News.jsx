@@ -30,23 +30,24 @@ class News extends React.Component {
                 </div>
             );
 		})
+
+		if (this.state.loading) {
+			return (
+				<div className="sk-circle">
+					{circle()}
+				</div>
+			);
+		}
+
 		this.setState({
 			loading: false
 		},() =>{
-			if (this.state.loading) {
-				return (
-					<div className="sk-circle">
-						{circle()}
-					</div>
-				);
-			} else {
-				return (
-					<div>
-						<p className="title">Noticias</p>
-						{data}
-					</div>
-				)
-			}
+			return (
+				<div>
+					<p className="title">Noticias</p>
+					{data}
+				</div>
+			)
 		})		
 	}
 }
