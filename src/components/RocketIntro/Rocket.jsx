@@ -15,7 +15,7 @@ class Rocket extends React.Component {
 	render() {
 		return (
 			<div>
-				<div className="home" style={{backgroundImage: `url(${background}`}}>
+				<div className="rocketHome" style={{backgroundImage: `url(${background}`}}>
 					<div className="title"><img src={rocket} alt=""/></div>
 
 					<div className="options">
