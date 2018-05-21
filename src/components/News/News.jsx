@@ -3,10 +3,24 @@ import "./News.scss"
 
 class News extends React.Component {
 
-	render() {
-		const ReactMarkdown = require('react-markdown');
+	constructor(props){
+		super(props);
+		this.state = {
+			news: props.state.news,
+			loading: true
+		}
+	}
 
-		var data = this.props.state.news.map((input, index) => {
+	render() {
+		const ReactMarkdown = require('react-markdown');	
+		function circle(){
+			for(var i = 1; i < 13; i++){
+				return(
+					<div className={"sk-circle"+i+" sk-child"}></div>
+				);
+			}
+		}
+		var data = this.state.news.map((input, index) => {
 			var json = JSON.parse(input);
             return(
                 <div className="article" key={index}>
@@ -16,31 +30,24 @@ class News extends React.Component {
                 </div>
             );
 		})
-		if (!this.state.loading) {
-			return (
-				<div className="sk-circle">
-					<div className="sk-circle1 sk-child"></div>
-					<div className="sk-circle2 sk-child"></div>
-					<div className="sk-circle3 sk-child"></div>
-					<div className="sk-circle4 sk-child"></div>
-					<div className="sk-circle5 sk-child"></div>
-					<div className="sk-circle6 sk-child"></div>
-					<div className="sk-circle7 sk-child"></div>
-					<div className="sk-circle8 sk-child"></div>
-					<div className="sk-circle9 sk-child"></div>
-					<div className="sk-circle10 sk-child"></div>
-					<div className="sk-circle11 sk-child"></div>
-					<div className="sk-circle12 sk-child"></div>
-				</div>
-			);
-		} else {
-			return (
-				<div>
-					<p className="title">Noticias</p>
-					{data}
-				</div>
-			)
-		}
+		this.setState({
+			loading: false
+		},() =>{
+			if (this.state.loading) {
+				return (
+					<div className="sk-circle">
+						{circle()}
+					</div>
+				);
+			} else {
+				return (
+					<div>
+						<p className="title">Noticias</p>
+						{data}
+					</div>
+				)
+			}
+		})		
 	}
 }
 

@@ -27,8 +27,7 @@ class Provider extends React.Component{
                                         date: metadata.client_modified,
                                         owner_id: response.account_id,
                                         owner_name: response.name.display_name
-                                    })],
-                                    loading: true
+                                    })]
                                 }))
                             })                                               
                         })   
