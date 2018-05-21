@@ -1,5 +1,5 @@
 import React from "react"
-import NewsHandler from "../components/Context/SProvider"
+import SProvider from "../Context/Storage"
 import News from './News'
 
 class NewsHandler extends React.Component {
@@ -11,3 +11,5 @@ class NewsHandler extends React.Component {
         )
     }
 }
+
+export default NewsHandler
