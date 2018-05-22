@@ -1,13 +1,19 @@
 .home {
 	width: 100vw;
 	height: 100vh;
+	background-color: #f7f7f7;
 
 	.modules {
 		display: flex;
 		flex-flow: row wrap;
+		height: calc(100% - 60px);
 		.module {
 			box-sizing: border-box;
 			padding: 16px;
+			overflow: scroll;
+			&::-webkit-scrollbar {
+				display: none;
+			}
 			
 			width: 30%;
 			&:nth-child(odd) {
@@ -16,10 +22,38 @@
 
 			.blogspot {
 				width: 100%;
-				height: 30px;
 
-				background-color: red;
+				.blogspot_entry {
+					background-color: white;
+					margin-bottom: 16px;
+					width: 100%;
+					display: flex;
+					flex-direction: column;
+					.blogspot_image {
+						align-self: center;
+						max-width: 80%;
+					}
+
+					h1 {
+						padding-left: 36px;
+					}
+					
+					p {
+						padding-left: 36px;
+						padding-right: 36px;
+						padding-bottom: 36px;
+					}
+				}
 			}
 		}
+	}
+}
+
+.shadow {
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+	&:hover {
+		box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 	}
 }
