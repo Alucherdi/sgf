@@ -23,6 +23,7 @@ class Home extends React.Component {
 						</div>
 					</div>
 					<div className="module">
+						{this.lastnews()}
 						<Timeline
 							className="shadow"
 							dataSource={{
@@ -36,6 +37,15 @@ class Home extends React.Component {
 						/>
 					</div>
 				</div>
+			</div>
+		)
+	}
+
+	lastnews = () => {
+		return (
+			<div className="lastNews shadow">
+				<h1>Título Noticia</h1>
+				<iframe width="100%" height="315" src="https://www.youtube.com/embed/-TGDmH1SVr0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 			</div>
 		)
 	}
