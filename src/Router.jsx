@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from "react-router-dom"
 import { Switch } from "react-router"
 
 import AxtelForm from "./components/AxtelForm/AxtelForm.jsx"
-import News from "./components/News/News"
+import NewsHandler from "./components/News/NewsHandler"
 import Home from "./components/Wrapper/Home.jsx"
 
 class Router extends Component {
@@ -13,7 +13,7 @@ class Router extends Component {
 				<Switch>
 					<Route exact path="/" component={Home} />
 					<Route path={`${process.env.PUBLIC_URL}/axtel`} component={AxtelForm} />
-					<Route path={`${process.env.PUBLIC_URL}/news`} component={News} />
+					<Route path={`${process.env.PUBLIC_URL}/news`} component={NewsHandler} />
 				</Switch>
 			</ BrowserRouter>
 		)

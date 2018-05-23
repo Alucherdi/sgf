@@ -3,74 +3,52 @@ import "./News.scss"
 
 class News extends React.Component {
 
-	constructor() {
-		super();
+	constructor(props){
+		super(props);
 		this.state = {
-			news: [],
-			loading: false
+			news: props.state.news,
+			loading: true
 		}
-		this.initDB();
-	}
-
-	initDB() {
-		var token = 'oUhHgt2EauAAAAAAAAAAIL7ZT6g3MU5cUjwau-ZdbEnKVzPNM8-z8UU_G2NTYlgV';
-		var Dropbox = require('dropbox').Dropbox;
-		var dbx = new Dropbox({ accessToken: token });
-		dbx.filesListFolder({ path: '/Noticias' }).then(response => {
-			response.entries.map(data => {
-				dbx.filesGetTemporaryLink({ path: data.path_display }).then(json => {
-					fetch(json.link).then(response => {
-						return response.text();
-					}).then(text => {
-						this.setState(prevState => ({
-							news: [...prevState.news, text],
-							loading: true
-						}))
-					})
-				})
-			});
-		}).catch(function (error) {
-			console.log(error);
-		});
 	}
 
 	render() {
-		const ReactMarkdown = require('react-markdown');
-
+		const ReactMarkdown = require('react-markdown');	
+		function circle(){
+			for(var i = 1; i < 13; i++){
+				return(
+					<div className={"sk-circle"+i+" sk-child"}></div>
+				);
+			}
+		}
 		var data = this.state.news.map((input, index) => {
-			return (
-				<div className="article" key={index}>
-					<ReactMarkdown className="content" escapeHtml={false} skipHtml={false} source={input} />
-					<br />
-					<hr className="lineSeparator"/>
-				</div>
-			);
+			var json = JSON.parse(input);
+            return(
+                <div className="article" key={index}>
+                    <ReactMarkdown className="content" escapeHtml={false} skipHtml={false} source={json.content} />
+                    <br/>
+                    <hr/>
+                </div>
+            );
 		})
-		if (!this.state.loading) {
+
+		if (this.state.loading) {
 			return (
 				<div className="sk-circle">
-					<div className="sk-circle1 sk-child"></div>
-					<div className="sk-circle2 sk-child"></div>
-					<div className="sk-circle3 sk-child"></div>
-					<div className="sk-circle4 sk-child"></div>
-					<div className="sk-circle5 sk-child"></div>
-					<div className="sk-circle6 sk-child"></div>
-					<div className="sk-circle7 sk-child"></div>
-					<div className="sk-circle8 sk-child"></div>
-					<div className="sk-circle9 sk-child"></div>
-					<div className="sk-circle10 sk-child"></div>
-					<div className="sk-circle11 sk-child"></div>
-					<div className="sk-circle12 sk-child"></div>
+					{circle()}
 				</div>
 			);
-		} else {
+		}
+
+		this.setState({
+			loading: false
+		},() =>{
 			return (
 				<div>
 					<p className="title">Noticias</p>
 					{data}
 				</div>
 			)
-		}
+		})		
 	}
 }
 
