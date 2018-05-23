@@ -15,11 +15,11 @@ class Provider extends React.Component {
 
 		var dbx = new Dropbox({ accessToken: this.state.dropboxToken });
 
-		// Éste es el metodo de llenado, no se que hagas con el, pero (all) es la variable que trae toda la data
-
 		this.dropboxFileData(dbx)
 		.then(all => {
-			console.log(all)
+			this.setState({
+				news: all
+			})
 		})
 	}
 
