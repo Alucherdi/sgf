@@ -1,5 +1,7 @@
 import React from "react"
 
+import { Timeline } from "react-twitter-widgets"
+
 import Rocket from "../RocketIntro/Rocket.jsx"
 import NavBar from "../NavBar/NavBar.jsx"
 
@@ -20,7 +22,19 @@ class Home extends React.Component {
 							})}
 						</div>
 					</div>
-					<div className="module"></div>
+					<div className="module">
+						<Timeline
+							className="shadow"
+							dataSource={{
+								sourceType: 'profile',
+								screenName: 'SaoraAlucherdi'
+							}}
+							options={{
+								username: 'Alucherdi'
+							}}
+							onLoad={() => console.log('Timeline is loaded!')}
+						/>
+					</div>
 				</div>
 			</div>
 		)
@@ -32,7 +46,7 @@ class Home extends React.Component {
 		for (var i = 0; i < 20; i ++) {
 			m.push(
 				<div className="blogspot_entry shadow">
-					<img src={image} alt="" className="blogspot_image"/>
+					<img src={image} alt="" className="blogspot_image" key={i}/>
 					<h1>Título</h1>
 					<p>
 						Texto del blog Texto del blog Texto del blog 
