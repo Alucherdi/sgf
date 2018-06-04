@@ -63,7 +63,7 @@ class Velocity extends React.Component {
 							<div className="velOptions">
 								{velPlan.prices.map((velPrice) => {
 									return (
-										<div key={velPrice.id} className={"planOption shadow " + ((selectedVel == velPlan.id && selectedPrice == velPrice.id) ? 'selected' : '')} 
+										<div key={velPrice.id} className={"planOption shadow " + ((selectedVel === velPlan.id && selectedPrice === velPrice.id) ? 'selected' : '')} 
 										onClick={this.selectVelocity} 
 										vel-id={velPlan.id} price-id={velPrice.id}
 										price-mb={velPrice.mb} price-normal-price={velPrice.prontoPagoPrice}>

@@ -1,6 +1,8 @@
 import React from "react"
 import "./News.scss"
 
+import NavBar from "./../NavBar/NavBar"
+
 class News extends React.Component {
 
 	constructor(props){
@@ -45,7 +47,8 @@ class News extends React.Component {
 			);
 		}else{
 			return (
-				<div>											
+				<div>
+					<NavBar />
 					<p className="title">Noticias</p>
 					{data}
 				</div>

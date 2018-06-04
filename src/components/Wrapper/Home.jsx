@@ -2,10 +2,8 @@ import React from "react"
 
 import { Timeline } from "react-twitter-widgets"
 
-import Rocket from "../RocketIntro/Rocket.jsx"
 import NavBar from "../NavBar/NavBar.jsx"
 
-import background from "../RocketIntro/background.png"
 
 import "./Home.scss"
 
@@ -33,7 +31,6 @@ class Home extends React.Component {
 							options={{
 								username: 'Alucherdi'
 							}}
-							onLoad={() => console.log('Timeline is loaded!')}
 						/>
 					</div>
 				</div>
@@ -45,7 +42,7 @@ class Home extends React.Component {
 		return (
 			<div className="lastNews shadow">
 				<h1>Título Noticia</h1>
-				<iframe width="100%" height="315" src="https://www.youtube.com/embed/-TGDmH1SVr0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+				<iframe title="newTitle" width="100%" height="315" src="https://www.youtube.com/embed/-TGDmH1SVr0" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
 			</div>
 		)
 	}
@@ -55,7 +52,7 @@ class Home extends React.Component {
 		var m = []
 		for (var i = 0; i < 20; i ++) {
 			m.push(
-				<div className="blogspot_entry shadow">
+				<div className="blogspot_entry shadow" key={i}>
 					<img src={image} alt="" className="blogspot_image" key={i}/>
 					<h1>Título</h1>
 					<p>

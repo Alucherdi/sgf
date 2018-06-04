@@ -6,18 +6,28 @@
 	.modules {
 		display: flex;
 		flex-flow: row wrap;
+		justify-content: center;
 		height: calc(100% - 60px);
 		.module {
 			box-sizing: border-box;
 			padding: 16px;
 			overflow: scroll;
+			width: 30%;
+
+			@media screen and (max-width: 1180px) {
+				width: 95%;
+			}
+
 			&::-webkit-scrollbar {
 				display: none;
 			}
 			
-			width: 30%;
 			&:nth-child(odd) {
 				width: 70%;
+
+				@media screen and (max-width: 1180px) {
+					width: 95%;
+				}
 			}
 
 			.blogspot {
