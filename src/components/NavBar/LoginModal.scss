@@ -1,0 +1,82 @@
+.loginModal {
+	position: fixed;
+
+	top: 60px;
+	right: 0;
+	
+	width: 350px;
+	height: 330px;
+
+	background-color: white;
+
+	border-bottom-left-radius: 30px;
+	border-bottom-right-radius: 30px;
+
+	opacity: 0.95;
+	
+	.head {
+		height: 40px;
+		margin-bottom: 50px;
+
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+
+		div {
+			width: 50%;
+			text-align: center;
+
+			user-select: none;
+
+			line-height: 40px;
+			vertical-align: center;
+
+			background-color: black;
+			color: white;
+
+			transition: all 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
+			
+			&:hover {
+				background-color: white;
+				color: black;
+			}
+		}
+	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		input[type="text"], input[type="password"] {
+			width: 70%;
+
+			box-sizing: border-box;
+			padding: 16px 14px 16px 14px;
+			border: 1px solid;
+			outline: none;
+			border-color: rgba(0, 0, 0, 0.1);
+			margin-bottom: 12px;
+
+			transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+			
+			&:focus {
+				border-color: rgba(0, 0, 0, 0.9);
+			}
+		}
+
+		input[type="submit"] {
+			margin-top: 10px;
+			
+			width: 70%;
+			padding: 14px 12px 14px 12px;
+			background-color: black;
+			border: none;
+			outline: none;
+			color: white;
+
+			cursor: pointer;
+		}
+	}	
+}

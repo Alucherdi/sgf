@@ -4,6 +4,8 @@ import moment from "moment"
 import PlanSelection from "./PlanSelection"
 import Velocity from "./Velocity"
 import UserData from "./UserData"
+
+import NavBar from "./../NavBar/NavBar"
 //import References from "./References"
 //import Resume from "./Resume"
 import MapCoverage from "./MapCoverage"
@@ -88,10 +90,8 @@ class AxtelForm extends React.Component {
 		var price = this.state.userData.velocitySelection.priceNormalPrice
 
 		return (
-
-			
-			
 			<div>
+				<NavBar />
 				<div className="axtelForm">
 					<div className="left" onClick={() => {this.navigate(-1)}}>
 						<img src={leftImage} alt=""/>

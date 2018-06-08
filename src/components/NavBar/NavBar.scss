@@ -1,11 +1,10 @@
 .navbar {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	
+	position: fixed;
+	top: 0;
 	background-color: #1c1c1c;
 	color: white;
 	width: 100vw;
+	max-width: 100%;
 	height: 60px;
 
 	display: flex;
@@ -19,11 +18,14 @@
 		align-items: center;
 
 		.option {
+			color: white;
+			
 			margin-left: 16px;
 			margin-right: 16px;
 			
 			font-family: 'Roboto', sans-serif;
 			font-weight: bold;
+			user-select: none;
 		}
 	}
 

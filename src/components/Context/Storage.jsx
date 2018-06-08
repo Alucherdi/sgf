@@ -34,7 +34,7 @@ class Provider extends React.Component {
 				})
 			}).then((entries) => {
 				let promises = []
-				for (let [index, data] of entries.entries()) {
+				for (let data of entries.entries()) {
 					promises.push(new Promise((resolve, reject) => {
 						dbx.filesGetMetadata({ path: data.path_display })
 						.then(metadata => {
