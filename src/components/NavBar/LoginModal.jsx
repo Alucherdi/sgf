@@ -20,7 +20,7 @@ class LoginModal extends React.Component {
 		}
 		
 		fetch(properties.services.login, params).then(r => r.json()).then(data => {
-			if (data.code == 200) {
+			if (data.code === 200) {
 				CookieController.set("user", data.user.username)
 				document.location.href = "/"
 			} else {
