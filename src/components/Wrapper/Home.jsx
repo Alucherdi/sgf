@@ -41,7 +41,7 @@ class Home extends React.Component {
 	lastnews = () => {
 		return (
 			<div className="lastNews shadow">
-				<h1>Título Noticia</h1>
+				<h1>Rainbow Six</h1>
 				<iframe title="newTitle" width="100%" height="315" src="https://www.youtube.com/embed/-TGDmH1SVr0" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
 			</div>
 		)
@@ -56,22 +56,6 @@ class Home extends React.Component {
 					<img src={image} alt="" className="blogspot_image" key={i}/>
 					<h1>Título</h1>
 					<p>
-						Texto del blog Texto del blog Texto del blog 
-						Texto del blog Texto del blog Texto del blog 
-						Texto del blog Texto del blog Texto del blog 
-						Texto del blog Texto del blog Texto del blog 
-						Texto del blog Texto del blog Texto del blog 
-						Texto del blog Texto del blog Texto del blog 
-						Texto del blog Texto del blog Texto del blog 
-						Texto del blog Texto del blog Texto del blog 
-						Texto del blog Texto del blog Texto del blog 
-						Texto del blog Texto del blog Texto del blog 
-						Texto del blog Texto del blog Texto del blog 
-						Texto del blog Texto del blog Texto del blog 
-						Texto del blog Texto del blog Texto del blog 
-						Texto del blog Texto del blog Texto del blog 
-						Texto del blog Texto del blog Texto del blog 
-						Texto del blog Texto del blog Texto del blog 
 						Texto del blog Texto del blog Texto del blog 
 						Texto del blog Texto del blog Texto del blog 
 						Texto del blog Texto del blog Texto del blog 

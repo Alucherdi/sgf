@@ -1,10 +1,13 @@
 import React from "react"
-
 import LoginModal from "./LoginModal.jsx"
-
 import { Link } from "react-router-dom"
 
+import UserImage from "./user_image.jpg"
+
+import CookieController from "../../util/cookie.controller";
+
 import "./NavBar.scss"
+
 
 class NavBar extends React.Component {
 	constructor(props) {
@@ -12,7 +15,7 @@ class NavBar extends React.Component {
 
 		this.state = {
 			isLoginModalRendering: false,
-			isCookieSet: document.cookie.includes("user")
+			isCookieSet: CookieController.exist("user")
 		}
 	}
 	
@@ -29,8 +32,19 @@ class NavBar extends React.Component {
 	}
 	
 	render() {
-		var loginModal = this.state.isLoginModalRendering ? (<LoginModal />) : (<span></span>)
-		var loginButton = this.state.isCookieSet ? (<div className="option">Hi {document.cookie.split("=")[1]}</div>) : (<div className="option" onClick={this.bringModal}>Ingresar</div>)
+		var loginModal = this.state.isLoginModalRendering ? (<LoginModal isLogged={this.state.isCookieSet}/>) : (<span></span>)
+		
+		var loginButton = this.state.isCookieSet ? 
+			(<React.Fragment> 
+				<div className="option" onClick={this.bringModal}>
+					<img src={UserImage} alt="" className="userImage"/>
+				</div>
+				<div className="option" onClick={this.bringModal}>
+					<span className="userName">{CookieController.get("user")}</span>
+				</div>
+			</React.Fragment>) : 
+			(<div className="option" onClick={this.bringModal}>Ingresar</div>)
+
 		return (
 			<div className="navbar">
 				{loginModal}

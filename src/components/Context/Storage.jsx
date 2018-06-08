@@ -15,58 +15,62 @@ class Provider extends React.Component {
 
 		var dbx = new Dropbox({ accessToken: this.state.dropboxToken });
 
+		// Éste es el metodo de llenado, no se que hagas con el, pero (all) es la variable que trae toda la data
+
 		this.dropboxFileData(dbx)
-		.then(all => {
-			this.setState({
-				news: all
+			.then(all => {
+				this.setState({
+					news: all
+				})
 			})
-		})
 	}
 
 	dropboxFileData = (dbx) => {
-		return new Promise((resolve, reject) => {		
+		return new Promise((resolve, reject) => {
 			dbx.filesListFolder({ path: "/Noticias" })
-			.then(response => {
-				return new Promise((resolve, reject) => {
-					resolve(response.entries)
-				})
-			}).then((entries) => {
-				let promises = []
-				for (let data of entries.entries()) {
-					promises.push(new Promise((resolve, reject) => {
-						dbx.filesGetMetadata({ path: data.path_display })
-						.then(metadata => {
-							dbx.usersGetAccount({ account_id: metadata.sharing_info.modified_by })
-							.then(account => {
-								dbx.filesGetTemporaryLink({ path: data.path_display })
-								.then(json => {
-									fetch(json.link)
-									.then(jsonRes => {
-										return jsonRes.text()
-									})
-									.then(text => {
-										resolve({
-											content:    text,
-											file_id:    metadata.id,
-											date:       metadata.client_modified,
-											owner_id:   account.account_id,
-											owner_name: account.name.display_name
+				.then(response => {
+					return new Promise((resolve, reject) => {
+						resolve(response.entries)
+					})
+				}).then((entries) => {
+					let promises = []
+					for (let data of entries.entries()) {
+						var data = data[1]
+						promises.push(new Promise((resolve, reject) => {
+							dbx.filesGetMetadata({ path: data.path_display })
+								.then(metadata => {
+									dbx.usersGetAccount({ account_id: metadata.sharing_info.modified_by })
+										.then(account => {
+											dbx.filesGetTemporaryLink({ path: data.path_display })
+												.then(json => {
+													fetch(json.link)
+														.then(jsonRes => {
+															return jsonRes.text()
+														})
+														.then(text => {
+															resolve({
+																content: text,
+																file_id: metadata.id.split(':')[1],
+																path: data.path_display.split('/')[2].split('.md')[0],
+																date: metadata.client_modified,
+																owner_id: account.account_id,
+																owner_name: account.name.display_name
+															})
+														})
+												})
 										})
-									})
 								})
-							})
-						})
-					}))
-				}
-				resolve(Promise.all(promises))
-			})
+						}))
+					}
+					resolve(Promise.all(promises))
+				})
 		})
 	}
 
 	render() {
 		return (
 			<Context.Provider value={{
-				state: this.state
+				data: this.state.news
 			}}>
 				{this.props.children}
 			</Context.Provider>
@@ -74,19 +78,7 @@ class Provider extends React.Component {
 	}
 }
 
-class SProvider extends Component {
-	render() {
-		return (
-			<Provider>
-				<Context.Consumer>
-					{(context) => (
-						<div>{React.cloneElement(this.props.children, { state: context.state })}</div>
-					)}
-				</Context.Consumer>
-			</Provider>
-		)
-	}
-}
-
-
-export default SProvider;
+export {
+	Context,
+	Provider
+};
