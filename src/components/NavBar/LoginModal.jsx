@@ -23,6 +23,8 @@ class LoginModal extends React.Component {
 			if (data.code == 200) {
 				CookieController.set("user", data.user.username)
 				document.location.href = "/"
+			} else {
+				alert("Datos no validos")
 			}
 			console.log(data)
 		})

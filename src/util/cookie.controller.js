@@ -15,7 +15,7 @@ class CookieController{
 	}
 	
 	static set(key, value) {
-		document.cookie(`${key}=${value}`)
+		document.cookie = `${key}=${value}`
 	}
 
     static remove(key) {
