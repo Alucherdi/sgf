@@ -1,4 +1,120 @@
-$articleFont: 'Roboto', sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:700');
+
+$articleFont: 'Roboto Condensed', sans-serif;
+
+.modules{
+	display: flex;
+    font-family: $articleFont;
+	.module{
+        .news{
+            display: flex;
+            font-family: $articleFont;
+            flex-wrap: wrap;
+            justify-content: center;
+            box-sizing: border-box;
+            .obj{
+                width: 350px;
+                margin: 3px;
+                border: 1px #ccc solid;
+                max-height: 400px;
+                transition-duration: 0.4s;
+                overflow: hidden;
+        
+                a:link {
+                    color: black;
+                    text-decoration: none;
+                }
+            
+                a:visited {
+                    color: black;
+                    text-decoration: none;
+                }
+            
+                a:hover {
+                    color: black;
+                    text-decoration: none;
+                }
+        
+                .header{
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    font-size: 16px;
+                    font-weight: bold;	
+                }
+        
+                .banner img{
+                    width: 350px;
+                    height: 180px;
+                    cursor: pointer;
+                }
+        
+                .title{
+                    max-width: 330px;
+                    margin-left: 10px;
+                    font-size: 14px;
+                    font-weight: bold;						
+                    text-align: center;
+                }
+        
+                .body{						
+                    .creator{
+                        color: rgb(0, 0, 0);
+                        margin-left: 10px;
+                        margin-right: 10px;
+                        font-size: 16px;
+                        word-wrap: break-word;		                
+                    }
+                                
+                    .footer{
+                        margin-left: 10px;
+                        .media{
+                            &:hover {
+                                filter: drop-shadow(2px 2px 2px gray) hue-rotate(360deg);
+                            }				
+                        }
+                    }
+        
+                    .hr{
+                        border: 0;
+                        height: 0;
+                        border-top: 1px solid rgba(186, 186, 186, 0.3);
+                        border-bottom: 1px solid rgba(186, 186, 186, 0.3);
+                    }
+                }		
+            }
+        }
+        .ads{
+            align-self: right;
+            float: right;
+            .ad{
+                width: 342px; 
+                margin-bottom: 16px;
+                border: 1px #ccc solid;
+                max-height: 400px;
+                transition-duration: 0.4s;
+                overflow: hidden;
+                flex-direction: column;                
+                img{
+                    margin-top: 4px;
+                    margin-left: 3px;
+                }
+            }    
+        }
+    }
+}
+
+@keyframes spin { 
+    from { 
+        transform: rotate(0deg); 
+    } to { 
+        transform: rotate(360deg); 
+    }
+}
+
+.rotate{
+    animation:spin 1s linear 1;
+}
 
 .article{
 
@@ -54,16 +170,6 @@ $articleFont: 'Roboto', sans-serif;
         margin-left: auto;
         margin-right: auto
     }
-
-    hr{        
-        width: 80%;
-        margin-top: 30px;
-        margin-bottom: 60px;
-        margin-left: 5%;     
-        display: block;
-        margin-left: auto;
-        margin-right: auto
-    }
     
     a:link {
         color: black;
@@ -81,11 +187,37 @@ $articleFont: 'Roboto', sans-serif;
     }
 }
 
-.title{
-    font-family: $articleFont;    
-    font-size: 45px;
-    font-weight: bold;
+.Button {
+    background-color: #555555; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
     text-align: center;
+    text-decoration: none;
+    display: inline-block;    
+    margin: 4px 146px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white; 
+    color: black; 
+    border: 2px solid #555555;
+    font-family: $articleFont;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.Button:hover{
+    background-color: #555555;
+    color: white;
+}
+
+.shadow {
+	box-shadow: 0 1px 2px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24);
+	transition: all 0.1s cubic-bezier(.25,.8,.25,1);
+
+	&:hover {
+		box-shadow: 0 7px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	}
 }
 
 .sk-circle{

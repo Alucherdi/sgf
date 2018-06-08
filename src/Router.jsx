@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from "react-router-dom"
 import { Switch } from "react-router"
 
 import AxtelForm from "./components/AxtelForm/AxtelForm.jsx"
-import NewsHandler from "./components/News/NewsHandler"
+import News from "./components/News/News"
 import Home from "./components/Wrapper/Home.jsx"
 
 class Router extends Component {

@@ -15,6 +15,8 @@ class Provider extends React.Component {
 
 		var dbx = new Dropbox({ accessToken: this.state.dropboxToken });
 
+		// Éste es el metodo de llenado, no se que hagas con el, pero (all) es la variable que trae toda la data
+
 		this.dropboxFileData(dbx)
 		.then(all => {
 			this.setState({
@@ -47,7 +49,8 @@ class Provider extends React.Component {
 									.then(text => {
 										resolve({
 											content:    text,
-											file_id:    metadata.id,
+											file_id:    metadata.id.split(':')[1],
+											path: data.path_display.split('/')[2].split('.md')[0],
 											date:       metadata.client_modified,
 											owner_id:   account.account_id,
 											owner_name: account.name.display_name
@@ -66,7 +69,7 @@ class Provider extends React.Component {
 	render() {
 		return (
 			<Context.Provider value={{
-				state: this.state
+				data: this.state.news
 			}}>
 				{this.props.children}
 			</Context.Provider>
@@ -74,19 +77,7 @@ class Provider extends React.Component {
 	}
 }
 
-class SProvider extends Component {
-	render() {
-		return (
-			<Provider>
-				<Context.Consumer>
-					{(context) => (
-						<div>{React.cloneElement(this.props.children, { state: context.state })}</div>
-					)}
-				</Context.Consumer>
-			</Provider>
-		)
-	}
-}
-
-
-export default SProvider;
+export {
+	Context,
+	Provider
+};
