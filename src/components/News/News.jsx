@@ -5,27 +5,13 @@ import ReactMarkdown from "react-markdown"
 
 class News extends Component{
 
-    constructor(props){
-		super(props);				
-	}		
-
-	getBanner(data){
-		data.split('\n').map((url,index) =>{				
-			if(url.startsWith('!')){
-				var expression = /[-a-zA-Z0-9@:%_.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_.~#?&//=]*)?/gi;
-				var regex = new RegExp(expression);
-				var nurl = url.match(regex);
-				console.log(nurl[0])
-				return(
-					<img alt="banner" onClick={() =>{
-						this.setState({
-							news: data
-						})
-					}} src={nurl[0]} key={index}/>
-				);
-			}
-		})
+	constructor(props){
+		super(props);
+		this.state = {
+			selected: ""
+		}
 	}
+
 	render(){	
 		return(
 			<Provider>
@@ -46,7 +32,7 @@ class News extends Component{
 									return(
 										<img alt="banner" onClick={() =>{
 											this.setState({
-												news: key.content
+												selected: key.content
 											})
 										}} src={nurl[0]} key={index}/>
 									);
@@ -59,7 +45,7 @@ class News extends Component{
 										<div>
 											<div style={{cursor: 'pointer'}}className="header" onClick={() =>{
 													this.setState({
-														news: key.content
+														selected: key.content
 													})
 												}}>
 												<p>{"Por "+key.owner_name}
@@ -92,12 +78,26 @@ class News extends Component{
 								);
 							}						
 						})
-						return (
-							<div className="modules">
-								<div className="module">
-									<div className="news"> 
-										{entry}									
-									</div>	
+						if(this.state.selected != ""){
+							return(
+								<div>			
+									<button onClick={() =>{
+									   this.setState({
+											selected: ""
+										})
+									   }} className="Button">{"Back to news"}</button>
+									<div className="article">
+										<ReactMarkdown className="content" escapeHtml={false} skipHtml={false} source={this.state.selected} />
+									</div>
+								</div>    
+							)
+						}else{
+							return (
+								<div className="modules">
+									<div className="module">
+										<div className="news"> 
+											{entry}									
+										</div>	
 									</div>
 									<div className="module">
 										<div className="ads">
@@ -116,7 +116,8 @@ class News extends Component{
 										</div>
 									</div>
 								</div>	
-						)
+							)
+						}						
 					}}
 				</Context.Consumer>
 			</Provider>
