@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
-import './Register.scss';
+import './Login.scss';
 import 'react-datepicker/dist/react-datepicker.css'
 
-class Register extends Component {    
+class Login extends Component {    
 
     render(){
         return(
             <div className="register">
                 <form className="content">
-                    <div className="logo">                          
+                    <div className="logo">  
+                        <br/>                      
+                        <br/>         
                         <img alt="" src="https://i.imgur.com/iGzlyPd.png" width="256"/>
                         <p><b>Crear una cuenta de Space Gaming</b></p>
                     </div>
@@ -40,4 +42,4 @@ class Register extends Component {
     }
 }
 
-export default Register;
+export default Login;

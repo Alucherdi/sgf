@@ -1,10 +1,10 @@
 import React from "react"
-
 import LoginModal from "./LoginModal.jsx"
-
-import { Link } from "react-router-dom"
-
 import "./NavBar.scss"
+import CookieController from "../../util/cookie.controller";
+import Avatar from './assets/Avatar-NotLogged.jpg'
+import Avatar1 from './assets/Avatar-1.jpg'
+import Logo from './assets/Logo.png'
 
 class NavBar extends React.Component {
 	constructor(props) {
@@ -24,28 +24,33 @@ class NavBar extends React.Component {
 		})
 	}
 
-	updateCookie = () => {
-		
+	goPath = (e) =>{
+		e.preventDefault();
+		var path = e.currentTarget.getAttribute('value');		
+		document.location.href = `${process.env.PUBLIC_URL}/${path}`;
 	}
-	
+
 	render() {
-		var loginModal = this.state.isLoginModalRendering ? (<LoginModal />) : (<span></span>)
-		var loginButton = this.state.isCookieSet ? (<div className="option">Hi {document.cookie.split("=")[1]}</div>) : (<div className="option">Ingresar</div>)
+		var loginModal = this.state.isLoginModalRendering ? (<LoginModal isLogged={this.state.isCookieSet}/>) : (<span></span>)
+		var loginButton = this.state.isCookieSet ? (<div className="option">Hi {JSON.parse(CookieController.get("user")).user}</div>) : (<div className="option">Ingresar</div>)
+		var avatar = this.state.isCookieSet ? Avatar1 : Avatar
 		return (
 			<div className="navbar">
-				{loginModal}
-				<div className="navbar_leftOptions">
-					<Link to="/" className="option">Home</Link>			
+				{loginModal}	
+				<a href="/"><img alt="" className="logo" src={Logo} height="48"/></a>			
+				<div className="navbar_leftOptions" value="" onClick={this.goPath}>
+					<div className="option" value="">Home</div>
 				</div>
-				<div className="navbar_leftOptions">
-					<Link to={`${process.env.PUBLIC_URL}/news`} className="option">News</Link>
+				<div className="navbar_leftOptions" value="news" onClick={this.goPath}>
+					<div className="option" value="news">News</div>
 				</div>				
-				<div className="navbar_leftOptions">
-					<Link to={`${process.env.PUBLIC_URL}/axtel`} className="option">Axtel</Link>
+				<div className="navbar_leftOptions" value="axtel" onClick={this.goPath}>
+					<div className="option" value="axtel">Axtel</div>
 				</div>									
 				<div className="navbar_rightOptions" onClick={this.bringModal}>
 					{loginButton}
-				</div>
+					<img alt="" className="avatar" src={avatar} height="48"/>
+				</div>				
 			</div>
 		)
 	}

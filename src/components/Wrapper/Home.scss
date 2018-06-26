@@ -9,12 +9,12 @@
 		display: flex;
 		flex-flow: row wrap;
 		justify-content: center;
-		height: calc(100% - 60px);
+		height: calc(100% - 20px);
 		.module {
-			box-sizing: border-box;
-			padding: 16px;
+			box-sizing: border-box;			
 			overflow: scroll;
-			width: 30%;
+			width: 30%;			
+			padding: 16px;
 
 			@media screen and (max-width: 1180px) {
 				width: 95%;
@@ -34,6 +34,7 @@
 
 			.blogspot {
 				width: 100%;
+				padding-top: 21px;
 
 				.blogspot_entry {
 					border-radius: 10px;
@@ -44,7 +45,7 @@
 					flex-direction: column;
 					.blogspot_image {
 						align-self: center;
-						max-width: 80%;
+						max-width: 100%;
 					}
 
 					h1 {

@@ -7,6 +7,13 @@
 	max-width: 100%;
 	height: 60px;
 	display: flex;	
+	
+	.logo{
+		margin-top: 7px;
+		margin-left: 10px;
+		margin-right: 12px;
+	}
+
 
 	.navbar_leftOptions, .navbar_rightOptions{
 		height: 100%;
@@ -36,5 +43,11 @@
 	.navbar_rightOptions{
 		align-self: flex-end;
 		margin-left: auto;
+		
+		.avatar{
+			border-radius: 6px;
+			margin-left: -6px;
+			margin-right: 9px;
+		}
 	}
 }

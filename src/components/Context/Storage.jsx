@@ -34,28 +34,21 @@ class Provider extends React.Component {
 				})
 			}).then((entries) => {
 				let promises = []
-				for (let data of entries.entries()) {
+				for (let [index, data] of entries.entries()) {
 					promises.push(new Promise((resolve, reject) => {
-						dbx.filesGetMetadata({ path: data.path_display })
-						.then(metadata => {
-							dbx.usersGetAccount({ account_id: metadata.sharing_info.modified_by })
-							.then(account => {
-								dbx.filesGetTemporaryLink({ path: data.path_display })
-								.then(json => {
-									fetch(json.link)
-									.then(jsonRes => {
-										return jsonRes.text()
-									})
-									.then(text => {
-										resolve({
-											content:    text,
-											file_id:    metadata.id.split(':')[1],
-											path: data.path_display.split('/')[2].split('.md')[0],
-											date:       metadata.client_modified,
-											owner_id:   account.account_id,
-											owner_name: account.name.display_name
-										})
-									})
+						dbx.filesGetTemporaryLink({ path: data.path_display })						
+							.then(json => {		
+								fetch(json.link)
+								.then(jsonRes => {
+									return jsonRes.text()
+								})
+								.then(text => {
+									resolve({
+										content:    text,
+										date:       json.metadata.client_modified,
+										file_id: json.metadata.id.split(':')[1],
+										path: data.path_display.split('/')[2].split('.md')[0],
+										owner_id:   json.metadata.sharing_info.modified_by
 								})
 							})
 						})

@@ -1,20 +1,16 @@
 import React from "react"
-
 import { Timeline } from "react-twitter-widgets"
-
 import NavBar from "../NavBar/NavBar.jsx"
-
-
 import "./Home.scss"
-import { Provider, Context } from "../Context/Storage";
+import AdsSlider from "../Slider/AdsSlider";
 
 class Home extends React.Component {
 	render() {
 		return (
-			<div className="home">
-				<NavBar />
+			<div className="home">				
 				<div className="modules">
-					<div className="module">
+					<div className="module">						
+					<AdsSlider/>
 						<div className="blogspot">
 							{this.blogspot().map((blog) => {
 								return blog
@@ -27,14 +23,15 @@ class Home extends React.Component {
 							className="shadow"
 							dataSource={{
 								sourceType: 'profile',
-								screenName: 'SaoraAlucherdi'
+								screenName: 'GamershipMX'
 							}}
 							options={{
-								username: 'Alucherdi'
+								username: 'GamershipMX'
 							}}
 						/>
 					</div>
 				</div>
+				<NavBar/>				
 			</div>
 		)
 	}
@@ -42,8 +39,8 @@ class Home extends React.Component {
 	lastnews = () => {
 		return (
 			<div className="lastNews shadow">
-				<h1>Título Noticia</h1>
-				<iframe title="newTitle" width="100%" height="315" src="https://www.youtube.com/embed/-TGDmH1SVr0" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
+				<h1>Rainbox Six Siege</h1>
+				<iframe title="newTitle" width="100%" height="220" src="https://www.youtube.com/embed/-TGDmH1SVr0" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
 			</div>
 		)
 	}

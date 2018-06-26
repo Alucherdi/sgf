@@ -5,6 +5,7 @@ import { Switch } from "react-router"
 import AxtelForm from "./components/AxtelForm/AxtelForm.jsx"
 import News from "./components/News/News"
 import Home from "./components/Wrapper/Home.jsx"
+import Register from './components/Register/Register';
 
 class Router extends Component {
 	render() {
@@ -13,7 +14,8 @@ class Router extends Component {
 				<Switch>
 					<Route exact path="/" component={Home} />
 					<Route path={`${process.env.PUBLIC_URL}/axtel`} component={AxtelForm} />
-					<Route path={`${process.env.PUBLIC_URL}/news`} component={NewsHandler} />
+					<Route path={`${process.env.PUBLIC_URL}/news`} component={News} />
+					<Route path={`${process.env.PUBLIC_URL}/register`} component={Register} />
 				</Switch>
 			</ BrowserRouter>
 		)
