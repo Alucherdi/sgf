@@ -61,7 +61,7 @@ class News extends Component{
 													})
 												}}>
 												<p>{"Por KiritoDev"}
-													<span style={{ float: 'right' }}>{date}</span>
+													<span className="hide-img" style={{ float: 'right' }}>{date}</span>
 												</p>
 											</div>
 											<div className="banner">
@@ -119,22 +119,6 @@ class News extends Component{
 												<div className="news"> 
 													{entry}									
 												</div>	
-											</div>
-											<div className="module">
-												<div className="ads">
-													<div className="ad shadow">
-														<img src="https://i.imgur.com/vaI9lym.png" width="335" height="279"/>									
-													</div>		
-													<div className="ad shadow">
-														<img src="https://i.imgur.com/4cvxO3k.png" width="335" height="279"/>
-													</div>		
-													<div className="ad shadow">
-														<img src="https://i.imgur.com/vaI9lym.png" width="335" height="279"/>									
-													</div>		
-													<div className="ad shadow">
-														<img src="https://i.imgur.com/4cvxO3k.png" width="335" height="279"/>
-													</div>
-												</div>
 											</div>
 										</div>	
 									</div>

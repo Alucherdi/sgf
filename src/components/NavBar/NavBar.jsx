@@ -32,15 +32,12 @@ class NavBar extends React.Component {
 
 	render() {
 		var loginModal = this.state.isLoginModalRendering ? (<LoginModal isLogged={this.state.isCookieSet}/>) : (<span></span>)
-		var loginButton = this.state.isCookieSet ? (<div className="option">Hi {JSON.parse(CookieController.get("user")).user}</div>) : (<div className="option">Ingresar</div>)
+		var loginButton = this.state.isCookieSet ? (<div className="option hide">Hi {JSON.parse(CookieController.get("user")).user}</div>) : (<div className="option hide">Ingresar</div>)
 		var avatar = this.state.isCookieSet ? Avatar1 : Avatar
 		return (
 			<div className="navbar">
 				{loginModal}	
-				<a href="/"><img alt="" className="logo" src={Logo} height="48"/></a>			
-				<div className="navbar_leftOptions" value="" onClick={this.goPath}>
-					<div className="option" value="">Home</div>
-				</div>
+				<a href="/"><img alt="" className="logo" src={Logo} height="48"/></a>
 				<div className="navbar_leftOptions" value="news" onClick={this.goPath}>
 					<div className="option" value="news">News</div>
 				</div>				

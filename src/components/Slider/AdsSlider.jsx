@@ -15,7 +15,7 @@ class AdsSlider extends React.Component {
       autoplay: false,
       draggable: false,
       pauseOnHover: true,
-      className: "slider"
+      className: "slider slider-img"
     };
     return (
       <Slider {...settings}>

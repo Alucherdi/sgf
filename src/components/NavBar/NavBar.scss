@@ -37,7 +37,7 @@
 			font-family: 'Roboto', sans-serif;
 			font-weight: bold;
 			user-select: none;		
-		}
+		}			  
 	}
 
 	.navbar_rightOptions{
@@ -49,5 +49,11 @@
 			margin-left: -6px;
 			margin-right: 9px;
 		}
+	}	
+}
+
+@media only screen 
+	and (max-device-width : 350px){ 
+	 .hide { display: none;
 	}
 }

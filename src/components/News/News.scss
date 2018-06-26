@@ -7,6 +7,11 @@ $articleFont: 'Roboto Condensed', sans-serif;
 	display: flex;
     font-family: $articleFont;
 	.module{
+        box-sizing: border-box;			
+		overflow: hidden;
+        @media screen and (max-width: 1180px) {
+            width: 100%;
+        }
         .news{
             display: flex;
             font-family: $articleFont;
@@ -44,9 +49,9 @@ $articleFont: 'Roboto Condensed', sans-serif;
                 }
         
                 .banner img{
-                    width: 350px;
-                    height: 180px;
-                    cursor: pointer;
+                    align-self: center;
+                    max-width: 100%;
+                    max-height: 180px;
                 }
         
                 .title{
@@ -85,16 +90,14 @@ $articleFont: 'Roboto Condensed', sans-serif;
             }
         }
         .ads{
+            display: flex;
+            font-family: $articleFont;
+            flex-wrap: wrap;
+            justify-content: right;
+            box-sizing: border-box;
+            width: 100%;
             align-self: right;
-            float: right;
-            .ad{
-                width: 342px; 
-                margin-bottom: 16px;
-                border: 1px #ccc solid;
-                max-height: 400px;
-                transition-duration: 0.4s;
-                overflow: hidden;
-                flex-direction: column;                
+            .ad{                                
                 img{
                     margin-top: 4px;
                     margin-left: 3px;
@@ -102,6 +105,12 @@ $articleFont: 'Roboto Condensed', sans-serif;
             }    
         }
     }
+}
+
+@media only screen 
+	and (max-device-width : 380px){ 
+	 .hide-img { display: none;
+	}
 }
 
 @keyframes spin { 
@@ -221,11 +230,12 @@ $articleFont: 'Roboto Condensed', sans-serif;
 }
 
 .loading{
-    .centered {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        margin-top: -100px;
-        margin-left: -100px;
+    .centered {    
+        position: absolute;  
+        top: 0;  
+        bottom: 0;  
+        left: 0;  
+        right: 0;  
+        margin: auto;
     }
 }
