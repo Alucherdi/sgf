@@ -6,36 +6,56 @@
 	width: 100vw;
 	max-width: 100%;
 	height: 60px;
+	display: flex;	
+	
+	.logo{
+		margin-top: 7px;
+		margin-left: 10px;
+		margin-right: 12px;
+	}
 
-	display: flex;
-	justify-content: space-around;
 
 	.navbar_leftOptions, .navbar_rightOptions{
-		width: 50%;
 		height: 100%;
-
 		display: flex;
 		flex-direction: row;
 		align-items: center;
+		transition: 0.2s;					
+
+		&:hover{
+			background-color: #414141;
+			cursor: pointer;
+		}
+
+		a{
+			text-decoration: none;    
+		}
 
 		.option {
-			color: white;
-			
+			color: white;			
 			margin-left: 16px;
 			margin-right: 16px;
-			
 			font-family: 'Roboto', sans-serif;
 			font-weight: bold;
-			user-select: none;
+			user-select: none;		
+		}			  
+	}
+
+	.navbar_rightOptions{
+		align-self: flex-end;
+		margin-left: auto;
+		
+		.avatar{
+			border-radius: 6px;
+			margin-left: -6px;
+			margin-right: 9px;
 		}
-	}
+	}	
+}
 
-	.navbar_leftOptions {
-		justify-content: flex-start;
-	}
-
-	.navbar_rightOptions {
-		justify-content: flex-end;
+@media only screen 
+	and (max-device-width : 350px){ 
+	 .hide { display: none;
 	}
 
 	.userImage {

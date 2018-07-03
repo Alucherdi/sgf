@@ -2,26 +2,36 @@ import React, { Component } from 'react';
 import { Context, Provider } from '../Context/Storage';
 import "./News.scss"
 import ReactMarkdown from "react-markdown"
+import NavBar from "../NavBar/NavBar.jsx"
+import Loading from "../NavBar/assets/Loading.svg";
 
-import NavBar from "./../NavBar/NavBar"
-
-class News extends React.Component {
+class News extends Component{
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			selected: ""
+			selected: "",
+			loading: true
 		}
 	}
 
-	render() {
-		return (
+	componentDidMount(){
+		setTimeout(()=>{
+			this.setState({
+				loading: false
+			})
+		},4000)
+	}
+
+	render(){	
+		return(
 			<Provider>
 				<NavBar />
 				<Context.Consumer>
-					{context => {
-						var entry = context.data.map((key, index) => {
-							var date = new Date(key.date).toLocaleDateString('es-ES', {
+					{context =>{
+
+						var entry = context.data.map((key,index) =>{
+							var date = new Date(key.date).toLocaleDateString('es-ES',{
 								month: 'long',
 								day: 'numeric'
 							});
@@ -41,18 +51,18 @@ class News extends React.Component {
 									);
 								}
 							})
-							var lines = key.content.split(' ');
-							if (lines[0].startsWith('#')) {
-								return (
+							var lines = key.content.split('\n');
+							if(lines[0].startsWith('#')){
+								return(
 									<div className="obj shadow">
 										<div>
-											<div style={{ cursor: 'pointer' }} className="header" onClick={() => {
-												this.setState({
-													selected: key.content
-												})
-											}}>
-												<p>{"Por " + key.owner_name}
-													<span style={{ float: 'right' }}>{date}</span>
+											<div style={{cursor: 'pointer'}}className="header" onClick={() =>{
+													this.setState({
+														selected: key.content
+													})
+												}}>
+												<p>{"Por KiritoDev"}
+													<span className="hide-img" style={{ float: 'right' }}>{date}</span>
 												</p>
 											</div>
 											<div className="banner">
@@ -81,46 +91,41 @@ class News extends React.Component {
 								);
 							}
 						})
-						if (this.state.selected != "") {
+						if(this.state.loading){
 							return (
-								<div>
-									<button onClick={() => {
-										this.setState({
-											selected: ""
-										})
-									}} className="Button">{"Back to news"}</button>
-									<div className="article">
-										<ReactMarkdown className="content" escapeHtml={false} skipHtml={false} source={this.state.selected} />
-									</div>
+								<div className="loading">
+									<img className="centered" alt="" src={Loading} width="150"/>
 								</div>
-							)
-						} else {
-							return (
-								<div className="modules">
-									<div className="module">
-										<div className="news">
-											{entry}
+							);
+						}else{
+							if(this.state.selected != ""){
+								return(
+									<div>			
+										<button onClick={() =>{
+										   this.setState({
+												selected: ""
+											})
+										}} className="Button">{"Back to news"}</button>
+										<div className="article">
+											<ReactMarkdown className="content" escapeHtml={false} skipHtml={false} source={this.state.selected} />
 										</div>
+									</div>    
+								)
+							}else{
+								return (
+									<div>
+										<NavBar/>								
+										<div className="modules">
+											<div className="module">
+												<div className="news"> 
+													{entry}									
+												</div>	
+											</div>
+										</div>	
 									</div>
-									<div className="module">
-										<div className="ads">
-											<div className="ad shadow">
-												<img src="https://i.imgur.com/vaI9lym.png" width="335" height="279" />
-											</div>
-											<div className="ad shadow">
-												<img src="https://i.imgur.com/4cvxO3k.png" width="335" height="279" />
-											</div>
-											<div className="ad shadow">
-												<img src="https://i.imgur.com/vaI9lym.png" width="335" height="279" />
-											</div>
-											<div className="ad shadow">
-												<img src="https://i.imgur.com/4cvxO3k.png" width="335" height="279" />
-											</div>
-										</div>
-									</div>
-								</div>
-							)
-						}
+								)
+							}	
+						}											
 					}}
 				</Context.Consumer>
 			</Provider>

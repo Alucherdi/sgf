@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo');
+$font: 'Archivo', sans-serif;
+
+input[type=text],input[type=password],input[type=date] {
+    width: 85%;
+    padding: 11px;
+    margin: 5px 0 22px 40px;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    box-sizing: border-box;
+    font-family: $font;
+    transition: 5ms;
+
+    &:focus{
+        background-color: #ddd;
+        outline: none;
+    }
+}
+
+.register{
+    margin: auto auto 15% auto;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+
+    .content {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;     
+        width: 550px;
+        
+        .label-input{
+            margin-left: 40px;
+            color: white;
+            font-family: $font;
+            font-style: italic;
+            font-size: 15px;
+        }
+        .Terms{
+            margin-left: 40px;
+            color: white;
+            font-family: $font;
+            font-size: 13px;
+        }
+        .logo{
+            text-align: center;
+            color: white;
+            font-family: $font;
+        }
+        .rbtn {
+            background-color: rgb(255, 136, 0);
+            color: white;
+            padding: 12px;
+            margin: 8px 40px;
+            margin-bottom: 30px;
+            border: none;
+            cursor: pointer;
+            width: 85%;
+            opacity: 0.9;
+        
+            &:hover{
+                background-color: rgb(212, 113, 0);
+            }
+        }
+    }
+}
