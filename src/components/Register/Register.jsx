@@ -6,8 +6,8 @@ class Register extends Component {
 
     render(){
         return(
-            <div className="register">
-                <form className="content">
+            <div className="register cwa">
+                <form className="content cwa">
                     <div className="logo">                          
                         <img alt="" src="https://i.imgur.com/iGzlyPd.png" width="256"/>
                         <p><b>Crear una cuenta de Space Gaming</b></p>
@@ -33,7 +33,7 @@ class Register extends Component {
                         <input type="checkbox" name="third" value="third"/><label><b>Compartir mis datos con terceros asociados</b></label>
                     </div>
                     <br/>
-                    <button type="submit" class="rbtn"><b>Crear una cuenta de Space Gaming</b></button>
+                    <button type="submit" className="rbtn"><b>Crear una cuenta de Space Gaming</b></button>
                 </form>
             </div>
         );

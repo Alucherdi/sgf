@@ -2,7 +2,7 @@ import React from "react"
 import LoginModal from "./LoginModal.jsx"
 import "./NavBar.scss"
 import CookieController from "../../util/cookie.controller";
-import Avatar from './assets/Avatar-NotLogged.jpg'
+import NLI from './assets/Avatar-NotLogged.jpg'
 import Avatar1 from './assets/Avatar-1.jpg'
 import Logo from './assets/Logo.png'
 
@@ -13,7 +13,12 @@ class NavBar extends React.Component {
 
 		this.state = {
 			isLoginModalRendering: false,
+<<<<<<< Updated upstream
 			isCookieSet: CookieController.exist("user")
+=======
+			isCookieSet: document.cookie.includes("user"),
+			avatar: [Avatar1]
+>>>>>>> Stashed changes
 		}
 	}
 	
@@ -33,8 +38,9 @@ class NavBar extends React.Component {
 
 	render() {
 		var loginModal = this.state.isLoginModalRendering ? (<LoginModal isLogged={this.state.isCookieSet}/>) : (<span></span>)
-		var loginButton = this.state.isCookieSet ? (<div className="option hide">Hi {JSON.parse(CookieController.get("user")).user}</div>) : (<div className="option hide">Ingresar</div>)
-		var avatar = this.state.isCookieSet ? Avatar1 : Avatar
+		var cookie = JSON.parse(CookieController.get("user"));
+		var loginButton = this.state.isCookieSet ? (<div className="option hide">Hi {cookie.user}</div>) : (<div className="option hide">Ingresar</div>)
+		var avatar = this.state.isCookieSet ? this.state.avatar[cookie.avatar] : NLI
 		return (
 			<div className="navbar">
 				{loginModal}	

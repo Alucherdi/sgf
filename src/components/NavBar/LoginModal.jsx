@@ -25,7 +25,7 @@ class LoginModal extends React.Component {
 			if (data.code === 200) {
 				CookieController.set("user", JSON.stringify({
 					user: data.user.username,
-					avatar: 1
+					avatar: 0
 				}))
 				document.location.href = "/"
 			} else {
@@ -35,7 +35,7 @@ class LoginModal extends React.Component {
 	}	
 	
 	registerModal = () =>{
-		var modal = document.getElementById('myModal');
+		var modal = document.getElementById('register-modal');
 		modal.style.display = "block";
 	}
 
@@ -45,13 +45,23 @@ class LoginModal extends React.Component {
 	}
 	
 	componentDidMount(){
-		var modal = document.getElementById('myModal');
+		var modal = document.getElementById('register-modal');
 		window.onclick = function(event) {
 			if (event.target == modal) {
 				modal.style.display = "none";
 			}
-		}		
+		}   
+		window.onpopstate = this.onBackButtonEvent;
+		window.onpopstate = null;
 	}
+
+	onBackButtonEvent = (e) => {
+		e.preventDefault();		
+		document.history.replaceState(null, document.title, document.location.pathname);
+		var modal = document.getElementById('register-modal');
+		modal.style.display = "none";
+	}
+	  
 
 	render() {
 		var toRender = this.props.isLogged ?
@@ -64,12 +74,12 @@ class LoginModal extends React.Component {
 		</div>) :
 		(
 			<div>
-				<div id="myModal" class="modal">
-					<div class="modal-content">
+				<div id="register-modal" className="register-modal cwa">
+					<div className="modal-content cwa">
 						<Register/>
 					</div>
 				</div>
-				<div className="loginModal">			
+				<div className="loginModal cw">
 					<img className="logo-img" alt="" src={Logo} width="128"/>
 						<form onSubmit={this.sendLogin}>
 							<input type="text" placeholder="Usuario" name="username"/>
