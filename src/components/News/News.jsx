@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Context, Provider} from '../Context/Storage';
+import React, { Component } from 'react';
+import { Context, Provider } from '../Context/Storage';
 import "./News.scss"
 import ReactMarkdown from "react-markdown"
 import NavBar from "../NavBar/NavBar.jsx"
@@ -7,7 +7,7 @@ import Loading from "../NavBar/assets/Loading.svg";
 
 class News extends Component{
 
-	constructor(props){
+	constructor(props) {
 		super(props);
 		this.state = {
 			selected: "",
@@ -26,6 +26,7 @@ class News extends Component{
 	render(){	
 		return(
 			<Provider>
+				<NavBar />
 				<Context.Consumer>
 					{context =>{
 
@@ -35,18 +36,18 @@ class News extends Component{
 								day: 'numeric'
 							});
 
-							var banner = key.content.split('\n').map((url,index) =>{				
-								if(url.startsWith('!')){
+							var banner = key.content.split('\n').map((url, index) => {
+								if (url.startsWith('!')) {
 									var expression = /[-a-zA-Z0-9@:%_.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_.~#?&//=]*)?/gi;
 									var regex = new RegExp(expression);
 									var nurl = url.match(regex);
 									console.log(nurl[0])
-									return(
-										<img alt="banner" onClick={() =>{
+									return (
+										<img alt="banner" onClick={() => {
 											this.setState({
 												selected: key.content
 											})
-										}} src={nurl[0]} key={index}/>
+										}} src={nurl[0]} key={index} />
 									);
 								}
 							})
@@ -68,27 +69,27 @@ class News extends Component{
 												{banner}
 											</div>
 											<div className="body">
-												<p className="title">{lines[0].replace('#','').trim()}</p>
-												<hr className="hr"/>
+												<p className="title">{lines[0].replace('#', '').trim()}</p>
+												<hr className="hr" />
 												<div className="footer">
 													<a href="https://www.twitch.tv/mariome">
-														<img alt="twitch" className="media" src="https://media.discordapp.net/attachments/380090967421878283/449024695178887172/icons8_Twitch_64px.png" width="32" heigth="32"/>
+														<img alt="twitch" className="media" src="https://media.discordapp.net/attachments/380090967421878283/449024695178887172/icons8_Twitch_64px.png" width="32" heigth="32" />
 													</a>
 													<a href="https://twitter.com/KiritoDev">
-														<img alt="twitter" className="media" src="https://media.discordapp.net/attachments/380090967421878283/449024699003961345/icons8_Twitter_64px.png" width="32" heigth="32"/>
+														<img alt="twitter" className="media" src="https://media.discordapp.net/attachments/380090967421878283/449024699003961345/icons8_Twitter_64px.png" width="32" heigth="32" />
 													</a>
 													<a href="https://www.youtube.com/c/KiritoDev">
-														<img alt="youtube" className="media" src="https://media.discordapp.net/attachments/380090967421878283/449024699729444875/icons8_YouTube_64px_5.png" width="32" heigth="32"/>
+														<img alt="youtube" className="media" src="https://media.discordapp.net/attachments/380090967421878283/449024699729444875/icons8_YouTube_64px_5.png" width="32" heigth="32" />
 													</a>
 													<a href="facebook">
-														
+
 													</a>
 												</div>
-											</div>							
+											</div>
 										</div>
-									</div>  
+									</div>
 								);
-							}						
+							}
 						})
 						if(this.state.loading){
 							return (

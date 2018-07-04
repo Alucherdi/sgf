@@ -6,13 +6,14 @@ import Avatar from './assets/Avatar-NotLogged.jpg'
 import Avatar1 from './assets/Avatar-1.jpg'
 import Logo from './assets/Logo.png'
 
+
 class NavBar extends React.Component {
 	constructor(props) {
 		super(props)
 
 		this.state = {
 			isLoginModalRendering: false,
-			isCookieSet: document.cookie.includes("user")
+			isCookieSet: CookieController.exist("user")
 		}
 	}
 	
@@ -43,7 +44,10 @@ class NavBar extends React.Component {
 				</div>				
 				<div className="navbar_leftOptions" value="axtel" onClick={this.goPath}>
 					<div className="option" value="axtel">Axtel</div>
-				</div>									
+				</div>		
+				<div className="navbar_leftOptions" value="alliances" onClick={this.goPath}>
+					<div className="option" value="axtel">Aliados</div>
+				</div>							
 				<div className="navbar_rightOptions" onClick={this.bringModal}>
 					{loginButton}
 					<img alt="" className="avatar" src={avatar} height="48"/>

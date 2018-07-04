@@ -18,15 +18,15 @@ class Provider extends React.Component {
 		// Éste es el metodo de llenado, no se que hagas con el, pero (all) es la variable que trae toda la data
 
 		this.dropboxFileData(dbx)
-		.then(all => {
-			this.setState({
-				news: all
+			.then(all => {
+				this.setState({
+					news: all
+				})
 			})
-		})
 	}
 
 	dropboxFileData = (dbx) => {
-		return new Promise((resolve, reject) => {		
+		return new Promise((resolve, reject) => {
 			dbx.filesListFolder({ path: "/Noticias" })
 			.then(response => {
 				return new Promise((resolve, reject) => {
@@ -49,13 +49,13 @@ class Provider extends React.Component {
 										file_id: json.metadata.id.split(':')[1],
 										path: data.path_display.split('/')[2].split('.md')[0],
 										owner_id:   json.metadata.sharing_info.modified_by
+									})
 								})
 							})
-						})
-					}))
-				}
-				resolve(Promise.all(promises))
-			})
+						}))
+					}
+					resolve(Promise.all(promises))
+				})
 		})
 	}
 

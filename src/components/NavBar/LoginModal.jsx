@@ -6,7 +6,8 @@ import CookieController from "../../util/cookie.controller";
 import Logo from '../NavBar/assets/Logo-Alt.png'
 import Register from "../Register/Register";
 
-class LoginModal extends React.Component {
+class LoginModal extends React.Component {	
+	
 	sendLogin = (e) => {
 		e.preventDefault()
 		var formData = new FormData(e.currentTarget)
@@ -22,7 +23,7 @@ class LoginModal extends React.Component {
 		
 		fetch(properties.services.login, params).then(r => r.json()).then(data => {
 			if (data.code === 200) {
-				CookieController.add("user", JSON.stringify({
+				CookieController.set("user", JSON.stringify({
 					user: data.user.username,
 					avatar: 1
 				}))
