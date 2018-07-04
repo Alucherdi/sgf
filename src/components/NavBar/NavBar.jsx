@@ -1,14 +1,5 @@
 import React from "react"
 import LoginModal from "./LoginModal.jsx"
-<<<<<<< HEAD
-import { Link } from "react-router-dom"
-
-import UserImage from "./user_image.jpg"
-
-import CookieController from "../../util/cookie.controller";
-
-=======
->>>>>>> origin/Alexis
 import "./NavBar.scss"
 import CookieController from "../../util/cookie.controller";
 import Avatar from './assets/Avatar-NotLogged.jpg'
@@ -53,7 +44,10 @@ class NavBar extends React.Component {
 				</div>				
 				<div className="navbar_leftOptions" value="axtel" onClick={this.goPath}>
 					<div className="option" value="axtel">Axtel</div>
-				</div>									
+				</div>		
+				<div className="navbar_leftOptions" value="alliances" onClick={this.goPath}>
+					<div className="option" value="axtel">Aliados</div>
+				</div>							
 				<div className="navbar_rightOptions" onClick={this.bringModal}>
 					{loginButton}
 					<img alt="" className="avatar" src={avatar} height="48"/>

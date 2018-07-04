@@ -49,7 +49,9 @@ class Provider extends React.Component {
 										file_id: json.metadata.id.split(':')[1],
 										path: data.path_display.split('/')[2].split('.md')[0],
 										owner_id:   json.metadata.sharing_info.modified_by
+									})
 								})
+							})
 						}))
 					}
 					resolve(Promise.all(promises))

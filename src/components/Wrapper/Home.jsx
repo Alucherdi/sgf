@@ -2,7 +2,6 @@ import React from "react"
 import { Timeline } from "react-twitter-widgets"
 import NavBar from "../NavBar/NavBar.jsx"
 import "./Home.scss"
-import AdsSlider from "../Slider/AdsSlider";
 
 class Home extends React.Component {
 	render() {
@@ -10,7 +9,6 @@ class Home extends React.Component {
 			<div className="home">				
 				<div className="modules">
 					<div className="module">						
-					<AdsSlider/>
 						<div className="blogspot">
 							{this.blogspot().map((blog) => {
 								return blog
