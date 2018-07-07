@@ -40,6 +40,7 @@
     "react-dom": "^16.3.2",
     "react-gmaps": "^1.9.0",
     "react-markdown": "^3.3.0",
+    "react-password-strength": "^2.3.1",
     "react-pixi": "^0.9.16",
     "react-pixi-fiber": "^0.4.8",
     "react-responsive-carousel": "^3.1.41",

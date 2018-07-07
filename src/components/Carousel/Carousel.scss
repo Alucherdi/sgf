@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:700');
+
+$articleFont: 'Roboto Condensed', sans-serif;
+
+
+.slider {
+	display: flex;
+	overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.slide {
+	max-width: 100%;
+	min-width: 100%;
+	display: flex;
+	justify-content: center;
+    align-items: center;
+}
+
+.slideButtons {
+    margin-top: 15px;
+	width: 96%;
+	display: flex;
+    justify-content: space-around;
+    font-size: 25pt;
+    font-style: $articleFont;
+    p {
+        margin-top: 29px;
+    }
+    span {
+        width: 30px;
+        height: 30px;
+        background-color: #212121;
+        border-radius: 50%;
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+}

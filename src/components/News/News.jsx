@@ -3,7 +3,7 @@ import { Context, Provider } from '../Context/Storage';
 import "./News.scss"
 import ReactMarkdown from "react-markdown"
 import NavBar from "../NavBar/NavBar.jsx"
-import Loading from "../NavBar/assets/Loading.svg";
+import Loading from "../Assets/Loading.svg";
 
 class News extends Component{
 
@@ -29,25 +29,23 @@ class News extends Component{
 				<NavBar />
 				<Context.Consumer>
 					{context =>{
-
 						var entry = context.data.map((key,index) =>{
 							var date = new Date(key.date).toLocaleDateString('es-ES',{
 								month: 'long',
 								day: 'numeric'
 							});
-
+							var i = index;
 							var banner = key.content.split('\n').map((url, index) => {
 								if (url.startsWith('!')) {
 									var expression = /[-a-zA-Z0-9@:%_.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_.~#?&//=]*)?/gi;
 									var regex = new RegExp(expression);
 									var nurl = url.match(regex);
-									console.log(nurl[0])
 									return (
-										<img alt="banner" onClick={() => {
+										<img key={i} alt="banner" onClick={() => {
 											this.setState({
 												selected: key.content
 											})
-										}} src={nurl[0]} key={index} />
+										}} src={nurl[0]} />
 									);
 								}
 							})
@@ -98,7 +96,7 @@ class News extends Component{
 								</div>
 							);
 						}else{
-							if(this.state.selected != ""){
+							if(this.state.selected !== ""){
 								return(
 									<div>			
 										<button onClick={() =>{

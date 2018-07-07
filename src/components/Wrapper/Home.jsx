@@ -2,13 +2,15 @@ import React from "react"
 import { Timeline } from "react-twitter-widgets"
 import NavBar from "../NavBar/NavBar.jsx"
 import "./Home.scss"
+import Carousel  from "../Carousel/Carousel";
 
 class Home extends React.Component {
 	render() {
 		return (
-			<div className="home">				
-				<div className="modules">
+			<div className="home">							
+				<div className="modules">					
 					<div className="module">						
+					<Carousel/>					
 						<div className="blogspot">
 							{this.blogspot().map((blog) => {
 								return blog

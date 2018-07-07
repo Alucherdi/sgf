@@ -2,10 +2,9 @@ import React from "react"
 import LoginModal from "./LoginModal.jsx"
 import "./NavBar.scss"
 import CookieController from "../../util/cookie.controller";
-import NLI from './assets/Avatar-NotLogged.jpg'
-import Avatar1 from './assets/Avatar-1.jpg'
-import Logo from './assets/Logo.png'
-
+import NLI from '../Assets/Avatar-NotLogged.jpg'
+import Avatar1 from '../Assets/Avatar-1.jpg'
+import Logo from '../Assets/Logo.png'
 
 class NavBar extends React.Component {
 	constructor(props) {
@@ -13,12 +12,7 @@ class NavBar extends React.Component {
 
 		this.state = {
 			isLoginModalRendering: false,
-<<<<<<< Updated upstream
 			isCookieSet: CookieController.exist("user")
-=======
-			isCookieSet: document.cookie.includes("user"),
-			avatar: [Avatar1]
->>>>>>> Stashed changes
 		}
 	}
 	
@@ -38,9 +32,9 @@ class NavBar extends React.Component {
 
 	render() {
 		var loginModal = this.state.isLoginModalRendering ? (<LoginModal isLogged={this.state.isCookieSet}/>) : (<span></span>)
-		var cookie = JSON.parse(CookieController.get("user"));
-		var loginButton = this.state.isCookieSet ? (<div className="option hide">Hi {cookie.user}</div>) : (<div className="option hide">Ingresar</div>)
-		var avatar = this.state.isCookieSet ? this.state.avatar[cookie.avatar] : NLI
+		var cookie = this.state.isCookieSet ? JSON.parse(CookieController.get("user")) : null;
+		var loginButton = this.state.isCookieSet ? (<div className="option">Hi {cookie.user}</div>) : (<div className="option">Ingresar</div>)
+		var avatar = this.state.isCookieSet ? Avatar1 : NLI;
 		return (
 			<div className="navbar">
 				{loginModal}	
