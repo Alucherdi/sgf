@@ -39,16 +39,16 @@ class NavBar extends React.Component {
 			<div className="navbar">
 				{loginModal}	
 				<a href="/"><img alt="" className="logo" src={Logo} height="48"/></a>
-				<div className="navbar_leftOptions" value="news" onClick={this.goPath}>
+				<div className="navbar_leftOptions hide" value="news" onClick={this.goPath}>
 					<div className="option" value="news">News</div>
 				</div>				
-				<div className="navbar_leftOptions" value="axtel" onClick={this.goPath}>
+				<div className="navbar_leftOptions hide" value="axtel" onClick={this.goPath}>
 					<div className="option" value="axtel">Axtel</div>
 				</div>		
-				<div className="navbar_leftOptions" value="alliances" onClick={this.goPath}>
+				<div className="navbar_leftOptions hide" value="alliances" onClick={this.goPath}>
 					<div className="option" value="axtel">Aliados</div>
 				</div>							
-				<div className="navbar_rightOptions" onClick={this.bringModal}>
+				<div className="navbar_rightOptions hide" onClick={this.bringModal}>
 					{loginButton}
 					<img alt="" className="avatar" src={avatar} height="48"/>
 				</div>				

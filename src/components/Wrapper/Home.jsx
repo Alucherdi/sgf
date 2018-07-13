@@ -7,10 +7,12 @@ import Carousel  from "../Carousel/Carousel";
 class Home extends React.Component {
 	render() {
 		return (
-			<div className="home">							
+			<div className="home">						
 				<div className="modules">					
-					<div className="module">						
-					<Carousel/>					
+					<div className="module">
+						<div className="carousel">
+							<Carousel/>					
+						</div>
 						<div className="blogspot">
 							{this.blogspot().map((blog) => {
 								return blog
@@ -31,7 +33,7 @@ class Home extends React.Component {
 						/>
 					</div>
 				</div>
-				<NavBar/>				
+				<NavBar/>						
 			</div>
 		)
 	}

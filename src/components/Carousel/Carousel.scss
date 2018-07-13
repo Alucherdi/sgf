@@ -1,41 +1,75 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:700');
-
-$articleFont: 'Roboto Condensed', sans-serif;
-
-
-.slider {
-	display: flex;
-	overflow-x: hidden;
-    scroll-behavior: smooth;
+.item{
+    width: 85%;
+    margin: auto;
 }
 
-.slide {
-	max-width: 100%;
-	min-width: 100%;
-	display: flex;
-	justify-content: center;
-    align-items: center;
-}
+.owl-theme {    
+    position: relative;
+    z-index: 0;    
+    .owl-nav {        
+        margin-top: 10px;
+        text-align: center;
+        -webkit-tap-highlight-color: transparent;        
 
-.slideButtons {
-    margin-top: 15px;
-	width: 96%;
-	display: flex;
-    justify-content: space-around;
-    font-size: 25pt;
-    font-style: $articleFont;
-    p {
-        margin-top: 29px;
+        color: #4DC7A0;
+        
+        [class^="owl-"] {
+            color: rgb(0, 0, 0);            
+            margin: 5px;
+            padding: 1px 7px;
+            background: rgb(0, 0, 0);
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 3px; 
+        }
+        [class^="owl-"]:hover {
+            background: #4DC7A0;
+            color: #FFF;
+            text-decoration: none; 
+        }
+        
+        .disabled {
+          opacity: 0.5;
+          cursor: default; }
+      
+        .disabled + .owl-dots {
+            margin-top: 10px;
+        }
     }
-    span {
-        width: 30px;
-        height: 30px;
-        background-color: #212121;
-        border-radius: 50%;
-    
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
-    }
+    .owl-dots {
+        text-align: center;
+        -webkit-tap-highlight-color: transparent;     
+        position: relative;
+        transition: 0.6s;	
+        .owl-dot {
+            position: relative;
+            display: inline-block;
+            zoom: 1;
+            *display: inline;                 
+            span {
+                width: 10px;
+                height: 10px;
+                margin: 0px 5px;
+                background: #D6D6D6;
+                display: block;
+                -webkit-backface-visibility: visible;                
+                border-radius: 30px;                 
+                &:hover{
+                    background: black; 
+                }
+            }                     
+        }    
+        .active span{
+            background: black;
+        }    
+        button:focus{
+            outline: none;
+        }   
+    }        
+}    
+
+@media only screen and (max-device-width : 730px){ 
+	.size {
+		width: 100%;
+	}
 }
