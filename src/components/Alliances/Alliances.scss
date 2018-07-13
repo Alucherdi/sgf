@@ -1,0 +1,58 @@
+.main{
+    width: 90%;
+	max-width: 1000px;
+    margin: 30px auto;
+}
+
+.moon{
+    height: auto;
+	width: 70%;
+    margin: auto;
+    padding: 15%; 
+    display: block;
+}
+
+.flag_arena, .flag_xbox, .flag_gamelta, .flag_gameplanet, .flag_riot, .flag_rocket9,{
+    position: absolute;
+    visibility: visible;
+    height: auto;
+    width: 10%;
+}
+
+//Posicion de las banderas
+.flag_arena{
+    left: 50%;
+    top: 4em;
+    transform: rotate(-10deg);
+}
+
+.flag_xbox{
+    left: 42.5%;
+    top: 54em;
+    transform: rotate(170deg);
+}
+
+.flag_riot{
+    left: 65%;
+    top: 16em;
+    transform: rotate(45deg);
+}
+
+.flag_rocket9{
+    left: 62.5%;
+    top: 44em;
+    transform: rotate(110deg);
+}
+
+.flag_gamelta{
+    left: 29%;
+    top: 14em;
+    transform: rotate(-60deg);
+}
+
+.flag_gameplanet{
+    left: 26.5%;
+    top: 40em;
+    transform: rotate(-135deg);
+}
+
