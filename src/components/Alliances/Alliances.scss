@@ -1,0 +1,90 @@
+.navBarDiv
+{
+    z-index: 0;
+}
+
+/*.divWrapper
+{
+    //position: relative;
+    //transform: scale(2,2);
+    //float: left;
+    //border: 3px solid red;
+    //margin-left: 10%;
+    
+}*/
+
+.moon
+{
+    z-index: -2;
+    position: absolute;
+    margin-left: 28.75%;
+    margin-top: 0.625%;
+    width: 42.5%;
+
+}
+
+.flag_arena{
+    z-index: -1;
+    //border: 0.1px solid red;
+    position: absolute;
+    margin-left: 26%;
+    margin-top: 2%;
+    width: 11.17%;
+    transform: rotateY(-180deg) rotateZ(35deg);
+}
+
+.flag_gamelta
+{
+    // -3 because is "inside" the moon crater
+    z-index: -3;
+    //border: 0.1px solid red;
+    position: absolute;
+    margin-left: 66.5%;
+    margin-top: 2.5%;
+    width: 11.17%;
+    transform: rotateZ(50deg);
+}
+
+.flag_gameplanet
+{
+    z-index: -1;
+    //border: 0.1px solid red;
+    position: absolute;
+    margin-left: 60%;
+    margin-top: 13.4%;
+    width: 11.17%;
+    transform: rotateY(0deg) rotateZ(60deg);
+}
+
+.flag_riot
+{
+    z-index: -1;
+    //border: 0.1px solid red;
+    position: absolute;
+    margin-left: 62%;
+    margin-top: 30%;
+    width: 11.17%;
+    transform: rotateY(180deg) rotateZ(-150deg);
+}
+
+.flag_rocket9
+{
+    z-index: -1;
+    //border: 0.1px solid red;
+    position: absolute;
+    margin-left: 30.5%;
+    margin-top: 27%;
+    width: 11.17%;
+    transform: rotateY(0deg) rotateZ(-140deg);
+}
+
+.flag_xbox
+{
+    z-index: -1;
+    //border: 0.1px solid red;
+    position: absolute;
+    margin-left: 23%;
+    margin-top: 14%;
+    width: 11.17%;
+    transform: rotateY(0deg) rotateZ(-110deg);
+}
