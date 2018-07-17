@@ -1,6 +1,6 @@
 body{
     background-image: url("./Assets/space.png");
-    background-size: 75%;
+    background-size: 45%;
 }
 
 .nav{
@@ -76,6 +76,10 @@ body{
     border: none;
 }
 
+.logo_arena:hover, .logo_gamelta:hover, .logo_gameplanet:hover, .logo_riot:hover, .logo_rocket9:hover, .logo_xbox:hover{
+    cursor: pointer;
+}
+
 .logo_arena{
     width: 3%;
     margin-left: 51%;
@@ -119,21 +123,16 @@ body{
 }
 
 //Contenedor del Texto
-
 .container{
     position: absolute;
     display: inline-block;
     text-align: center;
     margin-left: 40%;
     margin-top: 25%;
-    //background: blue;
     width: 20%;
 }
 
 .textbox{
-    /*position: absolute;
-    margin-left: 0%;
-    margin-top: 0%;*/
     width: 100%;
 }
 
@@ -141,6 +140,7 @@ body{
     position: absolute;
     color: white;
     margin-left: 5%;
-    margin-top: -95%;
-    size: 50%;
+    margin-top: -60%;
+    font-weight: bold;
+    text-align: center;
 }

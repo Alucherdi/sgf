@@ -14,39 +14,69 @@ import Cuadro from "./Assets/cuadro.png";
 
 class Alliances extends React.Component {
 
+	arenaInfo(num){
+			var text= document.getElementById("textinfo")
+			text.innerHTML = "Accede a horas gratis en Arena.";
+	}
+
+	gameltaInfo(){
+		var text= document.getElementById("textinfo")
+			text.innerHTML = "Asiste a los grandes torneos de videojuegos.";
+	}
+
+	gameplanetInfo(){
+		var text= document.getElementById("textinfo")
+			text.innerHTML = "Consigue decuentos para comprar tus videojuegos favoritos.";
+	}
+
+	riotInfo(){
+		var text= document.getElementById("textinfo")
+			text.innerHTML = "Obten riotpoints gratis y otras regalos.";
+	}
+
+	rocket9Info(){
+		var text= document.getElementById("textinfo")
+			text.innerHTML = "Equipate con contenido gratuito y especial.";
+	}
+
+	xboxInfo(){
+		var text= document.getElementById("textinfo")
+			text.innerHTML = "Descuento en GOLD y muchas sorpresas más.";
+	}
+
 	render() {
 		return (
 			<React.Fragment>
-			<div class="nav">
+			<div className="nav">
 				<NavBar />
 			</div>
 
-			<section class="main">
+			<div className="main">
 
-				<section class="moonWrapper">
-						<img class="moon" src={SG_Moon}/>
+				<section className="moonWrapper">
+						<img className="moon" src={SG_Moon}/>
 						
-						<img class="flag_arena" src={SG_Flag}/>
-						<img class="flag_gamelta" src={SG_Flag}/>
-						<img class="flag_gameplanet" src={SG_Flag}/>
-						<img class="flag_riot" src={SG_Flag}/>
-						<img class="flag_rocket9" src={SG_Flag}/>
-						<img class="flag_xbox" src={SG_Flag}/>
+						<img className="flag_arena" src={SG_Flag}/>
+						<img className="flag_gamelta" src={SG_Flag}/>
+						<img className="flag_gameplanet" src={SG_Flag}/>
+						<img className="flag_riot" src={SG_Flag}/>
+						<img className="flag_rocket9" src={SG_Flag}/>
+						<img className="flag_xbox" src={SG_Flag}/>
 
-						<input type="image" onclick="" class="logo_arena" src={LogoArena}/>
-						<input type="image" class="logo_gamelta" src={LogoGamelta}/>
-						<input type="image" class="logo_gameplanet" src={LogoGamePlanet}/>
-						<input type="image" class="logo_riot" src={LogoRiot}/>
-						<input type="image" class="logo_rocket9" src={LogoRocket9}/>
-						<input type="image" class="logo_xbox" src={LogoXbox}/>
+						<img className="logo_arena" src={LogoArena} onClick={this.arenaInfo}/>
+						<img className="logo_gamelta" src={LogoGamelta} onClick={this.gameltaInfo}/>
+						<img className="logo_gameplanet" src={LogoGamePlanet} onClick={this.gameplanetInfo}/>
+						<img className="logo_riot" src={LogoRiot} onClick={this.riotInfo}/>
+						<img className="logo_rocket9" src={LogoRocket9} onClick={this.rocket9Info}/>
+						<img className="logo_xbox" src={LogoXbox} onClick={this.xboxInfo}/>
 
-						<div class="container">
-							<img class="textbox" src={Cuadro}/>
-							<div class="text">Hola Mundo</div>
+						<div className="container">
+							<img className="textbox" src={Cuadro}/>
+							<div className="text" id="textinfo"></div>
 						</div>
 						
 				</section>
-			</section>
+			</div>
 
 			</React.Fragment>
 		)
