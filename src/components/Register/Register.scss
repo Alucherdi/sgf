@@ -1,27 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Archivo');
 $font: 'Archivo', sans-serif;
 
-input[type=text],input[type=password],input[type=date] {
-    width: 85%;
-    padding: 11px;
-    margin: 5px 0 22px 40px;
-    display: inline-block;
-    border: 1.5px solid;
-    border-color: rgba(0, 0, 0, 0.336);
-    background: #f1f1f1;
-    box-sizing: border-box;
-    font-family: $font;
-    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-
-    &:focus{
-        border-color: rgba(0, 0, 0, 0.637);
-        background-color: #ddd;
-        outline: none;
-    }
-}
-
 .register{
-    margin: auto auto 15% auto;
+    margin: auto;
     left: 0;
     top: 0;
     width: 100%;
@@ -44,14 +25,14 @@ input[type=text],input[type=password],input[type=date] {
             }
 
             .ReactPasswordStrength-strength-bar{
-                margin: -22.4px 0px 22px 41px;                                
+                margin: -1px 0px 8px 41px;                                
                 height: 3px;
             }
             .ReactPasswordStrength-strength-desc{
                 text-align: left;
                 left: 0;           
                 width: 85%;     
-                margin: 40px 0px 0px 29px;
+                margin: 54px 1px 0px 29px;
                 color: rgb(63, 63, 63);                  
                 font-size: 12px;
                 font-style: normal;
@@ -67,10 +48,13 @@ input[type=text],input[type=password],input[type=date] {
             font-size: 15px;
         }
         .Terms{
-            margin-left: 40px;
+            margin: 20px 40px;
             color: rgb(36, 36, 36);  
             font-family: $font;
             font-size: 13px;
+            .error{
+                color: red
+            }
         }
         .logo{
             text-align: center;
@@ -84,8 +68,7 @@ input[type=text],input[type=password],input[type=date] {
             background-color: rgb(255, 136, 0);
             color: rgb(20, 20, 20);  
             padding: 12px;
-            margin: 8px 40px;
-            margin-bottom: 30px;
+            margin: 0px 40px 30px 40px;
             border: none;
             cursor: pointer;
             width: 85%;
@@ -99,9 +82,20 @@ input[type=text],input[type=password],input[type=date] {
     }
 }
 
-.ReactPasswordStrength-strength-bar{
-    .ReactPasswordStrength.is-strength-1{
-        display: none;
-    }
+.date{
+    width: 85%;
+    padding: 11px;
+    margin: 20px 0px 0px 40px;
+    display: inline-block;
+    border: 1.5px solid rgba(0, 0, 0, 0.336);
+    background: #f1f1f1;
+    box-sizing: border-box;
+    font-family: $font;
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+    &:focus{
+        border-color: rgba(0, 0, 0, 0.637);
+        background-color: #ddd;
+        outline: none;
+    }    
 }
-  

@@ -48,11 +48,12 @@ class News extends Component{
 										}} src={nurl[0]} />
 									);
 								}
+								return null;
 							})
 							var lines = key.content.split('\n');
 							if(lines[0].startsWith('#')){
 								return(
-									<div className="obj shadow">
+									<div className="obj shadow" key={index}>
 										<div>
 											<div style={{cursor: 'pointer'}}className="header" onClick={() =>{
 													this.setState({
@@ -88,6 +89,7 @@ class News extends Component{
 									</div>
 								);
 							}
+							return null;
 						})
 						if(this.state.loading){
 							return (

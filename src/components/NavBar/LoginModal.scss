@@ -118,7 +118,7 @@
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 30px;
+    padding-top: 6px;
     left: 0;
     top: 0;
     width: 100%;
@@ -136,10 +136,12 @@
 
 @media only screen and (max-device-width : 548px){ 
 	.cwa {
-		width: 100%;
+		width: 99.80%;
 		padding-top: 0px;
+		height: 100%;
+		overflow: scroll;
 		input[type=text],input[type=password],input[type=date] {
-			width: 75%;
+			width: 85%
 		}
 
 		.register .content .Terms{
@@ -148,6 +150,30 @@
 
 		.register .content .rbtn{
 			width: 76%;
+		}
+	}
+}
+
+@media only screen and (max-device-width : 460px){ 
+	.cwa {
+		input[type=text],input[type=password],input[type=date] {
+			width: 82%
+		}
+	}
+}
+
+@media only screen and (max-device-width : 390px){ 
+	.cwa {
+		input[type=text],input[type=password],input[type=date] {
+			width: 80%
+		}
+	}
+}
+
+@media only screen and (max-device-width : 390px){ 
+	.cwa {
+		input[type=text],input[type=password],input[type=date] {
+			width: 75%
 		}
 	}
 }
