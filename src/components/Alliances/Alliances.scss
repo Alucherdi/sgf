@@ -130,10 +130,20 @@ body{
     margin-left: 40%;
     margin-top: 25%;
     width: 20%;
+    display: none;
 }
 
 .textbox{
     width: 100%;
+}
+
+.logoallie{
+    position: absolute;
+    height: auto;
+    width: 50%;
+    margin-left: -75%;
+    margin-top: 7.5%;
+    //background: blue;
 }
 
 .text{
