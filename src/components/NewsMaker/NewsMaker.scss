@@ -92,51 +92,40 @@ $font:'Roboto Condensed', sans-serif;
     }
 }
 
-.panel{
-    float: none;
-    display: table;
-    margin-left: 42%;
-    .modal{
-        position: fixed;
-        width: 200px;
-        height: 50px;
-        background: rgb(240, 239, 237);
-        z-index: 999;
-    
-        border: 2px solid rgb(56, 56, 56);
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-    
-        .save{
-            margin-left: 30px;
-            margin-top: 8px;
-            transition: transform .2s;
-            &:hover{
-                transform: scale(1.3);
-            }
-        }
-    }
-}
-
 .m-box{    
     float: none;    
-    
+    overflow: hidden;
+    background: #1E1E1E;
     .module{            
         width: 100%;
-        height: 92.4vh;
+        max-height: 90.6vh;
         display: flex;    
-        box-sizing: border-box;    
+        box-sizing: border-box;            
         
         &::-webkit-scrollbar {
             display: none;
         }
         
+        .buttons{
+            min-width: 50px;
+            max-width: 50px;
+            background: #1E1E1E;
+            border-right: 3px solid #282828;
+            img{
+                margin: 20px 0 0 7px;
+                transition: transform .2s;
+                &:hover{
+                    transform: scale(1.3);
+                }
+            }
+        }         
+
         .preview{
             overflow: scroll;    
             width: inherit;            
             background: #1E1E1E;        
             color: white;    
-            //margin-left: 2px;
+            
             .title{
                 text-align: center;
                 font-size: 20pt;
@@ -168,7 +157,7 @@ $font:'Roboto Condensed', sans-serif;
 }
 
 .monaco-editor{
-    min-height: 92.4vh;
+    min-height: 90.6vh;
     .parameter-hints-widget {
         border: 0px;
         .signature {

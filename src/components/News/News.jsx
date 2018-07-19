@@ -29,7 +29,12 @@ class News extends Component{
 				<NavBar />
 				<Context.Consumer>
 					{context =>{
-						var entry = context.data.map((key,index) =>{
+						var sort = context.data.sort(function(a, b) {
+							a = new Date(a.name.replace(".json", ""));
+							b = new Date(b.name.replace(".json", ""));
+							return a>b ? -1 : a<b ? 1 : 0;
+						});
+						var entry = sort.map((key,index) =>{
 							var obj = JSON.parse(key.content);
 							var date = new Date(key.name.replace(".json", "")).toLocaleDateString('es-ES',{
 								month: 'long',
@@ -83,7 +88,7 @@ class News extends Component{
 									<div id='stars2'></div>
 									<div id='stars3'></div>
 									<div id='title'>
-										<span class="saving">Loading <span>o</span><span>w</span><span>o</span></span>
+										<span className="saving">Loading <span>o</span><span>w</span><span>o</span></span>
 									</div>	
 									<div className="loading">
 										{

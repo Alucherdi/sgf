@@ -7,27 +7,79 @@ import NavBar from '../NavBar/NavBar';
 import Save from './Assets/Save.png'
 import Clear from './Assets/Clear.png'
 import Theme from './Assets/Theme.png'
+import Reset from './Assets/Reset.png'
 import { Dropbox } from "dropbox"
 import $ from 'jquery'
+import Resizable from 're-resizable';
 
 class NewsMaker extends React.Component{
 
     constructor(){
         super();
 
+        
         this.state = {
             title: "",
             banner: "",
             content: "",
             author: "",
             theme: "dark",
-            width: $(window).width(),
+            width: ($(window).width()/2)
         }
     }
 
-    editorDidMount = (editor) => {
+    editorDidMount = (editor, monaco) => {
         editor.focus();
-        this.editor = editor;        
+        this.editor = editor;
+        this.monaco = monaco;
+
+        editor.addAction({
+            id: 'save-id',
+            label: 'Save and Upload News',
+            keybindings: [monaco.KeyMod.CtrlCmd | monaco.KeyCode.F10],
+            contextMenuGroupId: 'navigation',
+            contextMenuOrder: 2.5,
+            run: function(ed) {
+                var box = document.getElementById('save-box');
+                box.style.display = "block";
+            }
+        });
+
+        function makeid() {
+            var text = "";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+          
+            for (var i = 0; i < 5; i++)
+              text += possible.charAt(Math.floor(Math.random() * possible.length));
+          
+            return text;
+        }
+
+        editor.addAction({
+            id: 'download-id',
+            label: 'Download News',
+            keybindings: [monaco.KeyMod.CtrlCmd | monaco.KeyCode.F11],
+            contextMenuGroupId: 'navigation',
+            contextMenuOrder: 2.5,
+            run: function(ed) {
+                var json = JSON.stringify({
+                    content: editor.getValue()
+                });
+                var FileSaver = require('file-saver');
+                var file = new File([json], "News-"+makeid()+".json", {type: "json/application;charset=utf-8"});
+                FileSaver.saveAs(file);
+            }
+        });
+        
+        $(window).on('resize', () => {
+            editor.setValue(editor.getValue())
+            this.setState({
+                width: ($(window).width()/2)
+            },()=>{
+                this.resizable.updateSize({width: this.state.width})
+            })
+        });
+        
     }
 
     onRead = (e) =>{
@@ -88,12 +140,13 @@ class NewsMaker extends React.Component{
                 }
             }
         });
+        
     }
 
     cleanEditor = (e) =>{
         e.preventDefault()
         if (this.editor) {
-            this.editor.setValue(' ')
+            this.editor.setValue('')
         }        
     }
 
@@ -112,7 +165,7 @@ class NewsMaker extends React.Component{
 
     changeTheme = (e) =>{
         e.preventDefault()
-        this.toggleTheme();
+        this.toggleTheme()
     }
 
     uploadNews = (e) =>{
@@ -129,6 +182,21 @@ class NewsMaker extends React.Component{
           });
     }
 
+    onResize = (size) =>{
+        this.setState({
+            width: size.x-48
+        })
+    }
+
+    resetSize = (e) =>{
+        e.preventDefault();
+        this.setState({
+            width: ($(window).width()/2)
+        },()=>{
+            this.resizable.updateSize({width: this.state.width})
+        })
+    }
+
     render() {
         const code = this.state.content;
         const options = {
@@ -136,21 +204,17 @@ class NewsMaker extends React.Component{
             automaticLayout: true,
             minimap: {
                 enabled: false
+            },
+            scrollbar: {
+                useShadows: false,
+                horizontalScrollbarSize: 15
             }
         };
-        var theme = this.state.theme === "dark" ? "vs-dark" : "vs";
         return (
             <React.Fragment>
-                <div className="panel">
-                    <div className="modal">
-                        <img className="save" alt="" src={Save} onClick={this.openBox} width={32}/>
-                        <img className="save" alt="" src={Clear} onClick={this.cleanEditor} width={32}/>
-                        <img className="save" alt="" src={Theme} onClick={this.changeTheme} width={32}/>
-                    </div>   
-                </div>
                 <div className="save-box">
-                    <div id="save-box" class="modal">
-                        <div class="modal-content"> 
+                    <div id="save-box" className="modal">
+                        <div className="modal-content"> 
                             <div className="main">
                                 <img className="logo" alt="" src={Logo} width="128"/>
                                 <p>Upload News</p>
@@ -170,17 +234,25 @@ class NewsMaker extends React.Component{
                 </div>
                 <div className="m-box" id="m-box">                                      
                     <div className="module">                    
-                        <div className="editor">
+                        <div className="buttons">
+                            <img className="save" alt="" src={Save} onClick={this.openBox} width={32}/>
+                            <img className="save" alt="" src={Clear} onClick={this.cleanEditor} width={32}/>
+                            <img className="save" alt="" src={Theme} onClick={this.changeTheme} width={32}/>
+                            <img className="save" alt="" src={Reset} onClick={this.resetSize} width={32}/>
+                        </div>
+                        <div className="editor" id="editor">
+                        <Resizable axis='x' onResize={this.onResize} ref={c => { this.resizable = c; }}>
                             <MonacoEditor
                                 ref="monaco"
                                 language="markdown"
-                                theme={theme}
-                                width={($(window).width()/2)}
+                                theme={(this.state.theme === "dark" ? "vs-dark" : "vs")}
+                                width={this.state.width}
                                 value={code}
                                 options={options}
                                 onChange={this.onChange}
                                 editorDidMount={this.editorDidMount}
                             />
+                        </Resizable>                            
                         </div>
                         <div className="preview" id="preview">
                             <p className="title">Preview</p>
