@@ -7,6 +7,7 @@ import News from "./components/News/News"
 import Home from "./components/Wrapper/Home.jsx"
 import Carousel from './components/Carousel/Carousel'
 import Alliances from "./components/Alliances/Alliances"
+import NewsMaker from './components/NewsMaker/NewsMaker';
 
 class Router extends Component {
 	render() {
@@ -18,6 +19,7 @@ class Router extends Component {
 					<Route path={`${process.env.PUBLIC_URL}/news`} component={News} />
 					<Route path={`${process.env.PUBLIC_URL}/test`} component={Carousel} />
 					<Route path={`${process.env.PUBLIC_URL}/alliances`} component={Alliances} />
+					<Route path={`${process.env.PUBLIC_URL}/uploader`} component={NewsMaker} />
 				</Switch>
 			</ BrowserRouter>
 		)

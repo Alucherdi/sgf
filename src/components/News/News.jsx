@@ -30,45 +30,32 @@ class News extends Component{
 				<Context.Consumer>
 					{context =>{
 						var entry = context.data.map((key,index) =>{
-							var date = new Date(key.date).toLocaleDateString('es-ES',{
+							var obj = JSON.parse(key.content);
+							var date = new Date(key.name.replace(".json", "")).toLocaleDateString('es-ES',{
 								month: 'long',
 								day: 'numeric'
 							});
-							var i = index;
-							var banner = key.content.split('\n').map((url, index) => {
-								if (url.startsWith('!')) {
-									var expression = /[-a-zA-Z0-9@:%_.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_.~#?&//=]*)?/gi;
-									var regex = new RegExp(expression);
-									var nurl = url.match(regex);
-									return (
-										<img key={i} alt="banner" onClick={() => {
-											this.setState({
-												selected: key.content
-											})
-										}} src={nurl[0]} />
-									);
-								}
-								return null;
-							})
-							var lines = key.content.split('\n');
-							if(lines[0].startsWith('#')){
-								return(
-									<div className="obj shadow" key={index}>
+							return(
+								<div className="obj shadow" key={index}>
 										<div>
 											<div style={{cursor: 'pointer'}}className="header" onClick={() =>{
 													this.setState({
-														selected: key.content
+														selected: obj.content
 													})
 												}}>
-												<p>{"Por KiritoDev"}
+												<p>{"Por "+obj.author}
 													<span className="hide-img" style={{ float: 'right' }}>{date}</span>
 												</p>
 											</div>
 											<div className="banner">
-												{banner}
+											<img alt="banner" onClick={() => {
+												this.setState({
+													selected: obj.content
+												})
+											}} src={obj.banner} />
 											</div>
 											<div className="body">
-												<p className="title">{lines[0].replace('#', '').trim()}</p>
+												<p className="title">{obj.title}</p>
 												<hr className="hr" />
 												<div className="footer">
 													<a href="https://www.twitch.tv/mariome">
@@ -87,15 +74,23 @@ class News extends Component{
 											</div>
 										</div>
 									</div>
-								);
-							}
-							return null;
+							)
 						})
 						if(this.state.loading){
 							return (
-								<div className="loading">
-									<img className="centered" alt="" src={Loading} width="150"/>
-								</div>
+								<div className="bgstar">
+									<div id='stars'></div>
+									<div id='stars2'></div>
+									<div id='stars3'></div>
+									<div id='title'>
+										<span class="saving">Loading <span>o</span><span>w</span><span>o</span></span>
+									</div>	
+									<div className="loading">
+										{
+											<img className="centered" alt="" src={Loading} width="150"/>
+										}
+									</div>
+								</div>								
 							);
 						}else{
 							if(this.state.selected !== ""){

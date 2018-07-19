@@ -20,12 +20,12 @@ class Provider extends Component {
 				this.setState({
 					news: all
 				})
-			})
+			})			
 	}
 
 	dropboxFileData = (dbx) => {
 		return new Promise((resolve, reject) => {
-			dbx.filesListFolder({ path: "/Noticias" })
+			dbx.filesListFolder({ path: "/News" })
 			.then(response => {
 				return new Promise((resolve, reject) => {
 					resolve(response.entries)
@@ -42,12 +42,9 @@ class Provider extends Component {
 								})
 								.then(text => {
 									resolve({
-										content:    text,
-										date:       json.metadata.client_modified,
-										file_id: json.metadata.id.split(':')[1],
-										path: data.path_display.split('/')[2].split('.md')[0],
-										owner_id:   json.metadata.sharing_info.modified_by,
-										index: index
+										content: text,
+										name: data.name,
+										id: index
 									})
 								})
 							})
