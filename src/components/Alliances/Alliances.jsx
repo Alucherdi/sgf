@@ -88,17 +88,17 @@ class Alliances extends React.Component {
 	//This warranties all the render passed and can access only once
 	componentDidMount ()
 	{
-		var divAnimator = document.getElementById("moon_flags");
+		var divAnimator = document.getElementById("mainDiv");
 		var pos = 0;
-		var animation = setInterval(floating, 10);
+		var animation = setInterval(floating, 25);
 
 		function floating()
 		{
-			pos += 0.01;
-			var changeSize = ((20 * Math.sin(1.7952*pos)) + 100).toString() + 'px';
+			pos += 0.025;
+			var changeSize = ((20 * Math.sin(1.7952*pos)) + 150).toString() + 'px';
 			divAnimator.style.marginTop = changeSize;
 			//divAnimator.style.transform = "rotate(" + (pos*50) + "deg)";
-			//divAnimator.style.zIndex = -2;
+			//divAnimator.style.zIndex = -1;
 		}
 	}
 
@@ -109,13 +109,14 @@ class Alliances extends React.Component {
 				<NavBar />
 			</div>
 
-			<div className="main">
+			<div className="main" id="mainDiv">
 
-				<section className="moonWrapper">
+					<div id="moon_flags">
+					
+						<img className="moon" src={SG_Moon}/>
 
-						<div id="moon_flags">
-						
-							<img className="moon" src={SG_Moon}/>
+						<div className="alliesFlags">
+
 							<img className="flag_arena" src={SG_Flag} />
 							<img className="flag_gamelta" src={SG_Flag} />
 							<img className="flag_gameplanet" src={SG_Flag} />
@@ -129,16 +130,17 @@ class Alliances extends React.Component {
 							<img className="logo_riot" src={LogoRiot} onClick={this.riotInfo} />
 							<img className="logo_rocket9" src={LogoRocket9} onClick={this.rocket9Info} />
 							<img className="logo_xbox" src={LogoXbox} onClick={this.xboxInfo} />
-						</div>
 
-						<div className="container" id="divinfo">
-							<img className="textbox" src={Cuadro} />
-							<img className="logoallie" id="logoAliado" />
-
-							<div className="text" id="textinfo"></div>
 						</div>
+					</div>
+
+					<div className="container" id="divinfo">
+						<img className="textbox" src={Cuadro} />
+						<img className="logoallie" id="logoAliado" />
+
+						<div className="text" id="textinfo"></div>
+					</div>
 						
-				</section>
 			</div>
 
 			</React.Fragment>

@@ -8,21 +8,66 @@ body{
 }
 
 .main{
-    width: 90%;
-	max-width: 2000px;
-    margin: 30px;
+    position: relative;
+    
+    margin: auto;
+    margin-top: 10%;
+    //width: 90%;
+    max-width: 2000px;
+    //height: auto;
+    
+    //animation: spinRoundRound 10s infinite linear;
+    //overflow: auto;
+    //border: 3px solid #0000FF;
+    z-index: 0;
+}
+
+#moon_flags
+{
+    //position: inherit;
+    animation: spinRoundRound 50s infinite linear;
+    // Moon_flags y container son "hermanos" contextuales (stacking)
+    z-index: 0;
+}
+
+@keyframes spinRoundRound
+{
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+    
 }
 
 .moon{
-    z-index: -3;
-    position: absolute;
-    margin-left: 25%;
-    margin-top: 10%;
+    display: block;  
+    margin-left: auto;
+    margin-right: auto;
     width: 50%;
+    // Moon y allies flags son "hermanos" contextuales (stacking)
+    z-index: -2;
+}
+
+.alliesFlags
+{
+    position: absolute;
+    display: block; 
+    left: 0;
+    right: 0; 
+    top: -20%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 100%;
+    //border: 3px solid #FF00FF;
+
+    // Moon y allies flags son "hermanos" contextuales (stacking)
+    //Aquí poner 0 para que funcione el click
+    z-index: 0;
+
 }
 
 .flag_arena, .flag_xbox, .flag_gamelta, .flag_gameplanet, .flag_riot, .flag_rocket9,{
-    z-index: -2;
+    //Flags y logos son "hermanos" contextuales (stacking)
+    z-index: -1;
     position: absolute;
     visibility: visible;
     height: auto;
@@ -32,7 +77,7 @@ body{
 //Posicion de las banderas
 .flag_arena{
     margin-left: 50%;
-    margin-top: 0%;
+    margin-top: auto;
     transform: rotate(-10deg);
 }
 
@@ -55,7 +100,6 @@ body{
 }
 
 .flag_gamelta{
-    z-index: -4;
     margin-left: 26%;
     margin-top: 7%;
     transform: rotate(-60deg);
@@ -69,15 +113,17 @@ body{
 
 //Logos Aliados
 .logo_arena, .logo_gamelta, .logo_gameplanet, .logo_riot, .logo_rocket9, .logo_xbox{
-    z-index: -1;
+    //Flags y logos son "hermanos" contextuales (stacking)
+    z-index: 0;
     position: absolute;
     visibility: visible;
     height: auto;
-    border: none;
+    //border: 3px solid #FFFF00;
 }
 
 .logo_arena:hover, .logo_gamelta:hover, .logo_gameplanet:hover, .logo_riot:hover, .logo_rocket9:hover, .logo_xbox:hover{
     cursor: pointer;
+    //z-index: -1;
 }
 
 .logo_arena{
@@ -124,18 +170,21 @@ body{
 
 //Contenedor del Texto
 .container{
-    z-index: -1;
     position: absolute;
-    display: inline-block;
+    //display: inline-block;
     text-align: center;
     margin-left: 40%;
-    margin-top: 25%;
+    margin-top: -35%;
     width: 20%;
     display: none;
+
+    // Moon_flags y container son "hermanos" contextuales (stacking)
+    z-index: 1;
 }
 
 .textbox{
     width: 100%;
+    //z-index: -1;
 }
 
 .logoallie{
@@ -144,6 +193,7 @@ body{
     width: 50%;
     margin-left: -75%;
     margin-top: 7.5%;
+    //z-index: -1;
     //background: blue;
 }
 
@@ -154,39 +204,5 @@ body{
     margin-top: -60%;
     font-weight: bold;
     text-align: center;
+    //z-index: -1;
 }
-
-
-
-#moon_flags
-{
-    //position: relative;
-    //margin: 30px;
-    //width: 1200px;
-    //height: 500px;
-    
-
-    //margin: auto;
-    //animation: spinRoundRound 10s infinite linear;
-
-    transform-origin: 55% 35%;
-    //transform: rotate(180deg);
-    
-    //display: block;
-    
-    //overflow: hidden;
-    //z-index: -2;
-}
-
-@keyframes spinRoundRound
-{
-    0% {transform: rotate(0deg);}
-    100% {transform: rotate(360deg);}
-
-}
-
-/*#moon_flags::before, #moon_flags::after
-{
-    transform: translateZ(-1em);
-}*/
-
