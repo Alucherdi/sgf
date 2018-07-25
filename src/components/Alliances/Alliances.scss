@@ -8,26 +8,27 @@ body{
 }
 
 .main{
-    position: relative;
-    
-    margin: auto;
+    display: block;
+    /*By some reason, position: relative affects the hover/onClick of every logo in the .main DIV*/
+    position: absolute;
+    margin-left: 5%;
     margin-top: 10%;
-    //width: 90%;
+    width: 90%;
     max-width: 2000px;
-    //height: auto;
-    
-    //animation: spinRoundRound 10s infinite linear;
-    //overflow: auto;
-    //border: 3px solid #0000FF;
-    z-index: 0;
+    //border: 5px solid #75f575;
+    z-index: -1;
 }
 
-#moon_flags
+.moonDiv
 {
-    //position: inherit;
+    display: block;
+    position: relative;
     animation: spinRoundRound 50s infinite linear;
-    // Moon_flags y container son "hermanos" contextuales (stacking)
-    z-index: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    //border: 3px solid #0000FF;
+    z-index: -4;
 }
 
 @keyframes spinRoundRound
@@ -38,171 +39,171 @@ body{
 }
 
 .moon{
-    display: block;  
+    display: block;
+    position: relative;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
-    // Moon y allies flags son "hermanos" contextuales (stacking)
-    z-index: -2;
+    width: 100%;
+    z-index: -4;
 }
 
 .alliesFlags
 {
-    position: absolute;
-    display: block; 
-    left: 0;
-    right: 0; 
-    top: -20%;
+    display: block;
+    position: relative;
+    animation: spinRoundRound 50s infinite linear;
     margin-left: auto;
     margin-right: auto;
-    width: 100%;
-    height: 100%;
-    //border: 3px solid #FF00FF;
-
-    // Moon y allies flags son "hermanos" contextuales (stacking)
-    //Aquí poner 0 para que funcione el click
-    z-index: 0;
-
+    margin-top: -25%;
+    width: 90%;
+    //border: 2px solid #FF00FF;
+    z-index: -3;
 }
 
 .flag_arena, .flag_xbox, .flag_gamelta, .flag_gameplanet, .flag_riot, .flag_rocket9,{
-    //Flags y logos son "hermanos" contextuales (stacking)
-    z-index: -1;
+    display: block;
     position: absolute;
     visibility: visible;
-    height: auto;
     width: 10%;
+    //border: 1px solid #FFFFFF;
+    z-index: -3;
 }
 
-//Posicion de las banderas
+//Flags positions (Reduced -37% in margin-top aprox. in every flag and logo)
 .flag_arena{
     margin-left: 50%;
-    margin-top: auto;
+    margin-top: -36%;
     transform: rotate(-10deg);
 }
 
 .flag_xbox{
     margin-left: 42.5%;
-    margin-top: 60%;
+    margin-top: 25%;
     transform: rotate(170deg);
 }
 
 .flag_riot{
     margin-left: 70%;
-    margin-top: 12%;
+    margin-top: -26%;
     transform: rotate(45deg);
 }
 
 .flag_rocket9{
     margin-left: 64%;
-    margin-top: 55%;
+    margin-top: 20%;
     transform: rotate(110deg);
 }
 
 .flag_gamelta{
     margin-left: 26%;
-    margin-top: 7%;
+    margin-top: -30%;
     transform: rotate(-60deg);
 }
 
 .flag_gameplanet{
     margin-left: 22.5%;
-    margin-top: 48%;
+    margin-top: 14%;
     transform: rotate(-135deg);
 }
 
-//Logos Aliados
+//Allies logos
 .logo_arena, .logo_gamelta, .logo_gameplanet, .logo_riot, .logo_rocket9, .logo_xbox{
-    //Flags y logos son "hermanos" contextuales (stacking)
-    z-index: 0;
+    display: block;
     position: absolute;
     visibility: visible;
-    height: auto;
-    //border: 3px solid #FFFF00;
+    z-index: -2;
 }
 
 .logo_arena:hover, .logo_gamelta:hover, .logo_gameplanet:hover, .logo_riot:hover, .logo_rocket9:hover, .logo_xbox:hover{
     cursor: pointer;
-    //z-index: -1;
 }
 
 .logo_arena{
     width: 3%;
     margin-left: 51%;
-    margin-top: 1%;
+    margin-top: -35%;
     transform: rotate(-15deg);
 }
 
 .logo_gamelta{
     width: 3.5%;
     margin-left: 26.5%;
-    margin-top: 11%;
+    margin-top: -26%;
     transform: rotate(-65deg);
 }
 
 .logo_gameplanet{
     width: 3.5%;
     margin-left: 25.5%;
-    margin-top: 54%;
+    margin-top: 20%;
     transform: rotate(-145deg);
 }
 
 .logo_riot{
     width: 3.5%;
     margin-left: 73.25%;
-    margin-top: 12.25%;
+    margin-top: -25.75%;
     transform: rotate(55deg);
+    z-index: -2;
+    //border: 1px solid red;
 }
 
 .logo_rocket9{
     width: 4.5%;
     margin-left: 69.5%;
-    margin-top: 57.5%;
+    margin-top: 22.5%;
     transform: rotate(95deg);
 }
 
 .logo_xbox{
     width: 3%;
     margin-left: 48.5%;
-    margin-top: 65%;
+    margin-top: 30%;
     transform: rotate(165deg);
 }
 
-//Contenedor del Texto
+//Text container DIV
 .container{
+    display: block;
     position: absolute;
-    //display: inline-block;
     text-align: center;
-    margin-left: 40%;
-    margin-top: -35%;
-    width: 20%;
+    margin-left: 35%;
+    margin-top: -15%;
+    width: 30%;
     display: none;
-
-    // Moon_flags y container son "hermanos" contextuales (stacking)
-    z-index: 1;
+    //border: 1px solid gold;
+    z-index: -1;
 }
 
 .textbox{
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
     width: 100%;
-    //z-index: -1;
+    //border: 1px solid red;
 }
 
 .logoallie{
-    position: absolute;
+    display: block;
+    position: relative;
     height: auto;
-    width: 50%;
-    margin-left: -75%;
-    margin-top: 7.5%;
-    //z-index: -1;
-    //background: blue;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -90%;
+    width: 75%;
+    //border: 1px solid red;
 }
 
 .text{
-    position: absolute;
+    display: block;
+    position: relative;
     color: white;
-    margin-left: 5%;
-    margin-top: -60%;
+    margin-left: auto;
+    margin-top: 20%;
+    width: 100%;
     font-weight: bold;
     text-align: center;
-    //z-index: -1;
+    font-size: 1.5em;
+    //border: 1px solid lime;
 }
