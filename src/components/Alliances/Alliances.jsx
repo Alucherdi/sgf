@@ -31,6 +31,9 @@ class Alliances extends React.Component {
 	}
 
 	gameltaInfo(){
+		var divInfo = document.getElementById("divinfo")
+			divInfo.style.display = "block";
+			
 		var text= document.getElementById("textinfo")
 			text.innerHTML = "Asiste a los grandes torneos de videojuegos.";
 
@@ -39,6 +42,9 @@ class Alliances extends React.Component {
 	}
 
 	gameplanetInfo(){
+		var divInfo = document.getElementById("divinfo")
+			divInfo.style.display = "block";
+
 		var text= document.getElementById("textinfo")
 			text.innerHTML = "Consigue decuentos para comprar tus videojuegos favoritos.";
 
@@ -47,6 +53,9 @@ class Alliances extends React.Component {
 	}
 
 	riotInfo(){
+		var divInfo = document.getElementById("divinfo")
+			divInfo.style.display = "block";
+
 		var text= document.getElementById("textinfo")
 			text.innerHTML = "Obten riotpoints gratis y otras regalos.";
 			
@@ -55,6 +64,9 @@ class Alliances extends React.Component {
 	}
 
 	rocket9Info(){
+		var divInfo = document.getElementById("divinfo")
+			divInfo.style.display = "block";
+
 		var text= document.getElementById("textinfo")
 			text.innerHTML = "Equipate con contenido gratuito y especial.";
 
@@ -63,6 +75,9 @@ class Alliances extends React.Component {
 	}
 
 	xboxInfo(){
+		var divInfo = document.getElementById("divinfo")
+			divInfo.style.display = "block";
+
 		var text= document.getElementById("textinfo")
 			text.innerHTML = "Descuento en GOLD y muchas sorpresas más.";
 
@@ -76,7 +91,7 @@ class Alliances extends React.Component {
 			<div className="nav">
 				<NavBar />
 			</div>
-
+			{/*}
 			<div className="main">
 
 				<section className="moonWrapper">
@@ -105,6 +120,44 @@ class Alliances extends React.Component {
 						
 				</section>
 			</div>
+			*/}
+
+
+			<div className="bgstar">
+				<div id='stars'></div>
+				<div id='stars2'></div>
+				<div id='stars3'></div>
+
+				<div className="main">
+
+					<section className="moonWrapper">
+							<img className="moon" src={SG_Moon}/>
+							
+							<img className="flag_arena" src={SG_Flag}/>
+							<img className="flag_gamelta" src={SG_Flag}/>
+							<img className="flag_gameplanet" src={SG_Flag}/>
+							<img className="flag_riot" src={SG_Flag}/>
+							<img className="flag_rocket9" src={SG_Flag}/>
+							<img className="flag_xbox" src={SG_Flag}/>
+
+							<img className="logo_arena" src={LogoArena} onClick={this.arenaInfo}/>
+							<img className="logo_gamelta" src={LogoGamelta} onClick={this.gameltaInfo}/>
+							<img className="logo_gameplanet" src={LogoGamePlanet} onClick={this.gameplanetInfo}/>
+							<img className="logo_riot" src={LogoRiot} onClick={this.riotInfo}/>
+							<img className="logo_rocket9" src={LogoRocket9} onClick={this.rocket9Info}/>
+							<img className="logo_xbox" src={LogoXbox} onClick={this.xboxInfo}/>
+
+							<div className="container" id="divinfo">
+								<img className="textbox" src={Cuadro}/>
+								<img className="logoallie" id="logoAliado" />
+
+								<div className="text" id="textinfo"></div>
+							</div>
+							
+					</section>
+				</div>
+			</div>
+
 
 			</React.Fragment>
 		)
