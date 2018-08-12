@@ -47,76 +47,82 @@
     z-index: -4;
 }
 
-.alliesFlags
+#noText
+{
+    display: block;
+    position: absolute;
+    margin-left: -10%;
+    margin-right: auto;
+    margin-top: -90%;
+    width: 115%;
+    height: 500%;
+    z-index: -3;
+    //border: 2px solid #FF00FF;
+}
+
+.alliesSatellites
 {
     display: block;
     position: relative;
-    animation: spinRoundRound 50s infinite linear;
+    //animation: spinRoundRound 50s infinite linear;
     margin-left: auto;
     margin-right: auto;
     margin-top: -25%;
     width: 90%;
     //border: 2px solid #FF00FF;
-    z-index: -3;
+    z-index: -2;
 }
 
-.flag_arena, .flag_xbox, .flag_gamelta, .flag_gameplanet, .flag_riot, .flag_rocket9,{
+.satellite_arena, .satellite_gamelta, .satellite_gameplanet, .satellite_spaceGaming{
     display: block;
     position: absolute;
     visibility: visible;
-    width: 10%;
+    width: 12%;
     //border: 1px solid #FFFFFF;
-    z-index: -3;
+    z-index: -2;
 }
 
-//Flags positions (Reduced -37% in margin-top aprox. in every flag and logo)
-.flag_arena{
-    margin-left: 50%;
-    margin-top: -36%;
-    transform: rotate(-10deg);
-}
-
-.flag_xbox{
-    margin-left: 42.5%;
-    margin-top: 25%;
-    transform: rotate(170deg);
-}
-
-.flag_riot{
+//satellites positions (Reduced -37% in margin-top aprox. in every satellite and logo)
+.satellite_arena{
     margin-left: 70%;
-    margin-top: -26%;
-    transform: rotate(45deg);
-}
-
-.flag_rocket9{
-    margin-left: 64%;
-    margin-top: 20%;
-    transform: rotate(110deg);
-}
-
-.flag_gamelta{
-    margin-left: 26%;
     margin-top: -30%;
-    transform: rotate(-60deg);
-}
-
-.flag_gameplanet{
-    margin-left: 22.5%;
-    margin-top: 14%;
+    //transform: rotate(45deg);
     transform: rotate(-135deg);
 }
 
-//Allies logos
-.logo_arena, .logo_gamelta, .logo_gameplanet, .logo_riot, .logo_rocket9, .logo_xbox{
+.satellite_spaceGaming{
+    margin-left: 70%;
+    margin-top: 20%;
+    transform: rotate(-45deg);
+}
+
+.satellite_gamelta{
+    margin-left: 20%;
+    margin-top: -30%;
+    //transform: rotate(-45deg);
+    transform: rotate(135deg);
+    //border: 1px solid red;
+}
+
+.satellite_gameplanet{
+    margin-left: 20%;
+    margin-top: 20%;
+    transform: rotate(45deg);
+}
+
+.satellite_arena:hover, .satellite_gamelta:hover, .satellite_gameplanet:hover, .satellite_spaceGaming:hover{
+    cursor: pointer;
+}
+
+/*Allies logos
+.logo_arena, .logo_gamelta, .logo_gameplanet, .logo_spaceGaming{
     display: block;
     position: absolute;
     visibility: visible;
     z-index: -2;
 }
 
-.logo_arena:hover, .logo_gamelta:hover, .logo_gameplanet:hover, .logo_riot:hover, .logo_rocket9:hover, .logo_xbox:hover{
-    cursor: pointer;
-}
+
 
 .logo_arena{
     width: 3%;
@@ -137,30 +143,16 @@
     margin-left: 25.5%;
     margin-top: 20%;
     transform: rotate(-145deg);
-}
-
-.logo_riot{
-    width: 3.5%;
-    margin-left: 73.25%;
-    margin-top: -25.75%;
-    transform: rotate(55deg);
-    z-index: -2;
     //border: 1px solid red;
 }
 
-.logo_rocket9{
-    width: 4.5%;
+.logo_spaceGaming{
+    width: 3.5%;
     margin-left: 69.5%;
     margin-top: 22.5%;
-    transform: rotate(95deg);
+    transform: rotate(105deg);
 }
-
-.logo_xbox{
-    width: 3%;
-    margin-left: 48.5%;
-    margin-top: 30%;
-    transform: rotate(165deg);
-}
+*/
 
 //Text container DIV
 .container{
@@ -204,9 +196,119 @@
     width: 100%;
     font-weight: bold;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 2.25vw;
     //border: 1px solid lime;
 }
+
+//MOBILE SECTION
+.moonDivPhone
+{
+    display: block;
+    position: relative;
+    animation: spinRoundRound 50s infinite linear;
+    margin-left: -54.6875%;
+    margin-top: 0%;
+    width: 125%;
+    //border: 3px solid #0000FF;
+    z-index: -4;
+}
+
+#noTextPhone
+{
+    display: block;
+    position: absolute;
+    margin-left: -10%;
+    margin-right: auto;
+    margin-top: -160%;
+    width: 114%;
+    height: 650%;
+    z-index: -3;
+    //border: 2px solid #FF00FF;
+}
+
+.alliesSatellitesPhone
+{
+    display: block;
+    position: relative;
+    //animation: spinRoundRound 50s infinite linear;
+    margin-left: -54.6875%;
+    //margin-right: auto;
+    margin-top: -65%;
+    width: 125%;
+    //border: 2px solid #FF00FF;
+    z-index: -2;
+}
+
+.satellite_arenaPhone, .satellite_gameltaPhone, .satellite_gameplanetPhone, .satellite_spaceGamingPhone{
+    display: block;
+    position: absolute;
+    visibility: visible;
+    width: 20%;
+    //border: 1px solid #FFFFFF;
+    z-index: -2;
+}
+
+//satellites positions (Reduced -37% in margin-top aprox. in every satellite and logo)
+.satellite_arenaPhone{
+    margin-left: 75%;
+    margin-top: -70%;
+    //transform: rotate(45deg);
+    transform: rotate(202.5deg);
+}
+
+.satellite_spaceGamingPhone{
+    margin-left: 106%;
+    margin-top: -33%;
+    transform: rotate(247.5deg);
+}
+
+.satellite_gameltaPhone{
+    margin-left: 104%;
+    margin-top: 19%;
+    //transform: rotate(-45deg);
+    transform: rotate(292.5deg);
+    //border: 1px solid red;
+}
+
+.satellite_gameplanetPhone{
+    margin-left: 75%;
+    margin-top: 57%;
+    transform: rotate(337.5deg);
+}
+
+.satellite_arenaPhone:hover, .satellite_gameltaPhone:hover, .satellite_gameplanetPhone:hover, .satellite_spaceGamingPhone:hover{
+    cursor: pointer;
+}
+
+.containerPhone{
+    display: block;
+    position: absolute;
+    text-align: center;
+    margin-left: -3.5%;
+    margin-top: -28%;
+    width: 62.5%;
+    display: none;
+    //border: 1px solid gold;
+    z-index: -1;
+}
+
+.textPhone{
+    display: block;
+    position: relative;
+    color: white;
+    margin-left: auto;
+    margin-top: 20%;
+    width: 100%;
+    font-weight: bold;
+    text-align: center;
+    font-size: 4.75vw;
+    //border: 1px solid lime;
+}
+
+
+
+
+
 
 //Animacion estrellas
 .bgstar{
