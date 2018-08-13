@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Context, Provider } from '../Context/Storage';
-import "./News.scss"
+import "./NewsTemp.scss"
 import ReactMarkdown from "react-markdown"
 import NavBar from "../NavBar/NavBar.jsx"
 import Loading from "../Assets/Loading.svg";
@@ -23,20 +23,25 @@ class News extends Component{
 		},4000)
 	}
 
-	render(){	
+	redirectNews = (id) =>{
+		document.location.href = `${process.env.PUBLIC_URL}/post/${id}`;
+	}
+
+	render(){
+		
 		return(
 			<Provider>
 				<NavBar />
 				<Context.Consumer>
 					{context =>{
 						var sort = context.data.sort(function(a, b) {
-							a = new Date(a.name.replace(".json", ""));
-							b = new Date(b.name.replace(".json", ""));
+							a = new Date(a.date);
+							b = new Date(b.date);
 							return a>b ? -1 : a<b ? 1 : 0;
 						});
 						var entry = sort.map((key,index) =>{
 							var obj = JSON.parse(key.content);
-							var date = new Date(key.name.replace(".json", "")).toLocaleDateString('es-ES',{
+							var date = new Date(key.date).toLocaleDateString('es-ES',{
 								month: 'long',
 								day: 'numeric'
 							});
@@ -44,9 +49,7 @@ class News extends Component{
 								<div className="obj shadow" key={index}>
 										<div>
 											<div style={{cursor: 'pointer'}}className="header" onClick={() =>{
-													this.setState({
-														selected: obj.content
-													})
+													this.redirectNews(key.id)
 												}}>
 												<p>{"Por "+obj.author}
 													<span className="hide-img" style={{ float: 'right' }}>{date}</span>
@@ -54,9 +57,7 @@ class News extends Component{
 											</div>
 											<div className="banner">
 											<img alt="banner" onClick={() => {
-												this.setState({
-													selected: obj.content
-												})
+												this.redirectNews(key.id)
 											}} src={obj.banner} />
 											</div>
 											<div className="body">
@@ -89,42 +90,22 @@ class News extends Component{
 									<div id='stars3'></div>
 									<div id='title'>
 										<span className="saving">Loading <span>o</span><span>w</span><span>o</span></span>
-									</div>	
-									<div className="loading">
-										{
-											<img className="centered" alt="" src={Loading} width="150"/>
-										}
-									</div>
+									</div>										
 								</div>								
 							);
 						}else{
-							if(this.state.selected !== ""){
-								return(
-									<div>			
-										<button onClick={() =>{
-										   this.setState({
-												selected: ""
-											})
-										}} className="Button">{"Back to news"}</button>
-										<div className="article">
-											<ReactMarkdown className="content" escapeHtml={false} skipHtml={false} source={this.state.selected} />
+							return (
+								<div>
+									<NavBar/>								
+									<div className="modules">
+										<div className="module">
+											<div className="news"> 
+												{entry}									
+											</div>	
 										</div>
-									</div>    
-								)
-							}else{
-								return (
-									<div>
-										<NavBar/>								
-										<div className="modules">
-											<div className="module">
-												<div className="news"> 
-													{entry}									
-												</div>	
-											</div>
-										</div>	
-									</div>
-								)
-							}	
+									</div>	
+								</div>
+							)	
 						}											
 					}}
 				</Context.Consumer>
@@ -134,3 +115,11 @@ class News extends Component{
 }
 
 export default News;
+
+/*
+<div className="loading">
+										{
+											<img className="centered" alt="" src={Loading} width="150"/>
+										}
+									</div>
+*/

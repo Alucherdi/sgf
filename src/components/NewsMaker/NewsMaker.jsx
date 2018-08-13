@@ -173,7 +173,7 @@ class NewsMaker extends React.Component{
 		var dbx = new Dropbox({ accessToken: "oUhHgt2EauAAAAAAAAAAIL7ZT6g3MU5cUjwau-ZdbEnKVzPNM8-z8UU_G2NTYlgV" });
         var box = document.getElementById('save-box');        
         box.style.display = "none";
-        dbx.filesUpload({path: '/News/'+new Date().toISOString()+'.json', contents: JSON.stringify(this.state)})
+        dbx.filesUpload({path: '/SGNews/'+new Date().toISOString()+'.json', contents: JSON.stringify(this.state)})
           .then(function(response) {
             console.log(response);
           })

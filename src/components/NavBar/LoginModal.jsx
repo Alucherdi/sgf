@@ -47,8 +47,14 @@ class LoginModal extends React.Component {
 	
 	componentDidMount(){
 		var modal = document.getElementById('register-modal');
-		window.onclick = function(event) {
+		window.onclick = (event) => {
 			if (event.target === modal) {
+				modal.style.display = "none";
+			}
+		}
+		var close = document.getElementById('close-span');
+		window.onclick = (event) => {
+			if (event.target === close) {
 				modal.style.display = "none";
 			}
 		}   
@@ -75,8 +81,8 @@ class LoginModal extends React.Component {
 		</div>) :
 		(
 			<div>
-				<div id="register-modal" className="register-modal cwa">
-					<div className="modal-content cwa">
+				<div id="register-modal" className="register-modal">
+					<div className="modal-content">
 						<Register/>
 					</div>
 				</div>

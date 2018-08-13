@@ -3,7 +3,7 @@ $font: 'Archivo', sans-serif;
 
 .CustomInput{    
     input[type=text],input[type=password],input[type=date] {
-        width: 85%;
+        width: calc(95% - 60px);
         padding: 11px;
         margin: 20px 0px 0px 40px;
         display: inline-block;

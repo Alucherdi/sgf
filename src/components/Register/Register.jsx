@@ -187,32 +187,34 @@ class Register extends Component {
                         validName: false
                     })
                 }
-            }            
+            }
         }        
     }
 
     render(){
         return(
-            <div className="register cwa">
-                <div className="content cwa">
-                    <div className="logo">                          
-                        <img alt="" src={Logo} width="256"/>
-                        <p><b>Crear una cuenta de Space Gaming</b></p>
-                    </div>
-                    <br/>
-                    <CustomInput error="Utiliza un nombre valido" type="text" placeholder="Nombre Completo" id="name" onChange={this.nameValidator}/>
-                    <CustomInput error="Minimo 3 caracteres" type="text" placeholder="Nombre de Usuario" id="nick" onChange={this.nickValidator}/>
-                    <CustomInput error="Este email ya esta en uso" id="email" type="text" placeholder="Correo electronico" onChange={this.emailValidator}/>
-                    <CustomInput error="Estas direcciones de correo electrónico no coinciden." type="text" placeholder="Confirmar correo electronico" id="email-repeat" onChange={this.repeatValidator}/>
-                    <CustomInput error="Minimo 8 caracteres" type="password" placeholder="Contraseña" id="password" onChange={this.passValidator}/>                                 
-
-                    <div className="Terms">
-                        <input type="checkbox" onChange={this.termsValidator}/><label id="terms">Acepto los <b>Terminos de Uso, Terminos de Venta</b> y la <b>Politica de Privacidad</b></label>
+            <div className="main-register">                
+                <div className="register cwa">
+                    <span id="close-span" className="close-span">&times;</span>
+                    <div className="content cwa">
+                        <div className="logo">                          
+                            <img alt="" src={Logo} width="256"/>
+                            <p><b>Crear una cuenta de Space Gaming</b></p>
+                        </div>
                         <br/>
-                        <input type="checkbox" id="third" value="third"/><label><b>Compartir mis datos con terceros asociados</b></label>
-                    </div>
+                        <CustomInput error="Utiliza un nombre valido" type="text" placeholder="Nombre Completo" id="name" onChange={this.nameValidator}/>
+                        <CustomInput error="Minimo 3 caracteres" type="text" placeholder="Nombre de Usuario" id="nick" onChange={this.nickValidator}/>
+                        <CustomInput error="Este email ya esta en uso" id="email" type="text" placeholder="Correo electronico" onChange={this.emailValidator}/>
+                        <CustomInput error="Estas direcciones de correo electrónico no coinciden." type="text" placeholder="Confirmar correo electronico" id="email-repeat" onChange={this.repeatValidator}/>
+                        <CustomInput error="Minimo 8 caracteres" type="password" placeholder="Contraseña" id="password" onChange={this.passValidator}/>                                 
 
-                    <button onClick={this.sendRegister} className="rbtn"><b>Crear una cuenta de Space Gaming</b></button>
+                        <div className="Terms">
+                            <input type="checkbox" onChange={this.termsValidator}/><label id="terms">Acepto los <b>Terminos de Uso, Terminos de Venta</b> y la <b>Politica de Privacidad</b></label>
+                            <br/>
+                            <input type="checkbox" id="third" value="third"/><label><b>Compartir mis datos con terceros asociados</b></label>
+                        </div>
+                        <button onClick={this.sendRegister} className="rbtn"><b>Crear una cuenta de Space Gaming</b></button>
+                    </div>
                 </div>
             </div>
         );

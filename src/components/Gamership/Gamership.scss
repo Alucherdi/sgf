@@ -1,0 +1,153 @@
+@font-face {
+    font-family: 'Monserrat' sans-serif;
+    src: url('https://fonts.googleapis.com/css?family=Montserrat:200');
+}
+
+$font: 'Monserrat' sans-serif;
+
+.gamership-main{    
+    .gamership-box{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        overflow: scroll;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        .gamership-date{
+            background-image: url('./Assets/View-1.jpg');
+            height: 100%; 
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: calc(100vh - 60px);            
+            display: flex;
+            flex-direction: column;
+            .logo{
+                margin: auto auto;
+            }
+            .date-box{
+                display: flex;
+                flex-direction: row;
+                margin: auto auto;
+                font-family: $font;
+                text-align: center;
+                .date-item{
+                    margin-left: 25px;
+                    display: flex;
+                    flex-direction: column;
+                    .sub{
+                        .day{
+                            color: white;
+                            font-size: 85pt;
+                            font-weight: 800;
+                        }
+                        .day-name{                            
+                            color: white;
+                            font-size: 21pt;
+                            font-weight: 200;
+                        }
+                    }
+                }
+            }
+        }
+        .gamership-news{
+            width: 100%;
+            height: calc(100vh - 30px);
+            background: green;
+            .news-div{
+                margin-top: 10%;
+                color: white;
+                text-align: center;
+                .text{
+                    .title{
+                        font-size: 32pt;
+                        font-weight: 600;
+                    }
+                    .subtitle{
+                        margin-top: 30px;
+                        line-height: 0.3;
+                        font-size: 24pt;
+                        font-weight: 300;
+                    }
+                }
+                .form{
+                    margin-top: 140px;
+                    .news-form{
+                        .text{
+                            width: 540px;
+                            height: 70px;
+                            background: transparent;
+                            border: 2px solid white;
+                            border-radius: 10px;
+                            font-size: 24pt;
+                            padding-left: 25px;
+                            color: white;
+                            transition: all 0.2s ease-out;
+                            &::placeholder {
+                                color: white;
+                            }
+                            &:focus{
+                                outline: none;
+                            }
+                        }
+                        .button{
+                            border: none;
+                            background: #C5A43B;
+                            width: 180px;
+                            height: 77px;
+                            margin-left: 7px;
+                            border-radius: 8px;
+                            font-size: 24pt;
+                            transition: all 0.2s ease-out;
+                            cursor: pointer;
+                            &:hover{                                
+                                background: rgb(167, 141, 57);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .gamership-follow{
+            width: 100%;
+            height: calc(100vh - 45px);
+            background: blue;
+            .wrapper{
+                margin-top: 14%;
+                .text{
+                    color: white;
+                    font-size: 48pt;
+                    font-weight: 800;
+                    text-align: center;
+                }
+                .follow-box{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    .follow-item{
+                        width: 128px;
+                        height: 128px;
+                        border-bottom: 7px solid white;
+                        img{
+                            transition: all 0.2s ease-out;
+                            cursor: pointer;
+                            &:hover{                                
+                                transform: scale(1.3, 1.3)
+                            }
+                        }
+                    }
+                }
+                .footer{
+                    color: white;
+                    text-align: center;
+                    position: fixed;
+                    bottom: 0;
+                    text-align: center;
+                    right: 0;
+                    left: 0;
+                }
+            }
+        }
+    }
+}

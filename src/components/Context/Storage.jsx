@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Dropbox } from "dropbox"
+import properties from '../Properties';
 
 const Context = React.createContext();
 
@@ -9,12 +10,12 @@ class Provider extends Component {
 		super(props);
 
 		this.state = {
-			dropboxToken: "oUhHgt2EauAAAAAAAAAAIL7ZT6g3MU5cUjwau-ZdbEnKVzPNM8-z8UU_G2NTYlgV",
+			dropboxToken: properties.services.dropbox,
 			news: []
 		}
 
 		var dbx = new Dropbox({ accessToken: this.state.dropboxToken });
-
+		
 		this.dropboxFileData(dbx)
 			.then(all => {
 				this.setState({
@@ -24,15 +25,15 @@ class Provider extends Component {
 	}
 
 	dropboxFileData = (dbx) => {
-		return new Promise((resolve, reject) => {
-			dbx.filesListFolder({ path: "/News" })
+		return new Promise((resolve, reject) => {			
+			dbx.filesListFolder({ path: "/SGNews" })
 			.then(response => {
 				return new Promise((resolve, reject) => {
 					resolve(response.entries)
 				})
 			}).then((entries) => {
 				let promises = []
-				for (let [index, data] of entries.entries()) {
+				entries.forEach(data => {					
 					promises.push(new Promise((resolve, reject) => {
 						dbx.filesGetTemporaryLink({ path: data.path_display })						
 							.then(json => {		
@@ -44,14 +45,15 @@ class Provider extends Component {
 									resolve({
 										content: text,
 										name: data.name,
-										id: index
+										date: data.server_modified,
+										id: data.rev
 									})
 								})
 							})
-						}))
-					}
-					resolve(Promise.all(promises))
-				})
+						}))		
+				});
+				resolve(Promise.all(promises))
+			})
 		})
 	}
 
