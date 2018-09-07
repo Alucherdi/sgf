@@ -44,7 +44,7 @@ class Gamership extends React.Component{
                         <div className="date-box">
                             <div className="date-item">
                                 <div className="sub">
-                                    <span className="day">{cd.days}</span>
+                                    <span className="day">{cd.days} :</span>
                                 </div>
                                 <div className="sub">
                                     <span className="day-name">Days</span>                                    
@@ -52,7 +52,7 @@ class Gamership extends React.Component{
                             </div>
                             <div className="date-item">
                                 <div className="sub">
-                                    <span className="day">{cd.hours}</span>                                    
+                                    <span className="day">{cd.hours}  :</span>                                    
                                 </div>
                                 <div className="sub">
                                     <span className="day-name">Hours</span>                                    
@@ -60,7 +60,7 @@ class Gamership extends React.Component{
                             </div>
                             <div className="date-item">
                                 <div className="sub">
-                                    <span className="day">{cd.minutes}</span>                                    
+                                    <span className="day">{cd.minutes}  :</span>                                    
                                 </div>
                                 <div className="sub">
                                     <span className="day-name">Minutes</span>                                    

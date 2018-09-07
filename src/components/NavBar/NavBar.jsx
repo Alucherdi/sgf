@@ -10,6 +10,7 @@ import $ from 'jquery'
 import Home from './Assets/Home.svg'
 import News from './Assets/News.svg'
 import Axtel from './Assets/Axtel.png'
+import GamershipLogo from './Assets/control.png'
 import Alliance from './Assets/Alliance.png'
 import Gamership from './Assets/Gamership.svg'
 
@@ -76,7 +77,7 @@ class NavBar extends React.Component {
 					<div id="bar" className="bar">
 						<div className="sidebar">
 							<div className="option" value="gamership" onClick={this.goPath}>
-								<img alt="" src={Gamership} width="20"/>
+								<img alt="" src={GamershipLogo} width="20"/>
 								<p>Gamership</p>
 							</div>
 							<div className="option" value="" onClick={this.goPath}>
