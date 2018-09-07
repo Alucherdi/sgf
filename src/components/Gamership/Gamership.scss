@@ -52,9 +52,14 @@ $font: 'Monserrat' sans-serif;
             }
         }
         .gamership-news{
-            width: 100%;
-            height: calc(100vh - 30px);
-            background: green;
+            background-image: url('./Assets/overlay-03.jpg');
+            height: 100%; 
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: calc(100vh - 60px);            
+            display: flex;
+            flex-direction: column;
             .news-div{
                 margin-top: 10%;
                 color: white;
@@ -110,9 +115,14 @@ $font: 'Monserrat' sans-serif;
             }
         }
         .gamership-follow{
-            width: 100%;
-            height: calc(100vh - 45px);
-            background: blue;
+            background-image: url('./Assets/overlay-02.jpg');
+            height: 100%; 
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: calc(100vh - 60px);            
+            display: flex;
+            flex-direction: column;
             .wrapper{
                 margin-top: 14%;
                 .text{

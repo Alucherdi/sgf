@@ -15,7 +15,7 @@ class Gamership extends React.Component{
     constructor(){
         super();
         var today = new Date();
-        var date =  new Date('1 Sep 2018');        
+        var date =  new Date('1 Oct 2018');        
         this.state = {
             date: getTimeDifference(date, [{ now: today, precision: 0, controlled: false }])
         }
@@ -23,7 +23,7 @@ class Gamership extends React.Component{
 
     componentDidMount = () =>{
         var today = new Date();
-        var date =  new Date('1 Sep 2018');
+        var date =  new Date('1 Oct 2018');
         setInterval(()=>{
             this.setState({
                 date: getTimeDifference(date, [{ now: today, precision: 3, controlled: false }])
