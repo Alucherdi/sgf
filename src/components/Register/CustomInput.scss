@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo');
+$font: 'Archivo', sans-serif;
+
+.CustomInput{    
+    input[type=text],input[type=password],input[type=date] {
+        width: calc(95% - 60px);
+        padding: 11px;
+        margin: 20px 0px 0px 40px;
+        display: inline-block;
+        border: 1.5px solid rgba(0, 0, 0, 0.336);
+        background: #f1f1f1;
+        box-sizing: border-box;
+        font-family: $font;
+        transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+        &:focus{
+            border-color: rgba(0, 0, 0, 0.637);
+            background-color: #ddd;
+            outline: none;
+        }    
+    }
+
+    span{
+        text-align: left;
+        margin-left: 40px;
+        color: rgb(255, 52, 52);                  
+        font-size: 12px;
+        font-style: normal;
+        font-family: $font;
+    }
+
+    .span-error{
+        display: none;
+    }
+}

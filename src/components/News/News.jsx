@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Context, Provider } from '../Context/Storage';
-import "./News.scss"
+import "./NewsTemp.scss"
 import ReactMarkdown from "react-markdown"
 import NavBar from "../NavBar/NavBar.jsx"
-import Loading from "../NavBar/assets/Loading.svg";
+import Loading from "../Assets/Loading.svg";
 
 class News extends Component{
 
@@ -23,53 +23,45 @@ class News extends Component{
 		},4000)
 	}
 
-	render(){	
+	redirectNews = (id) =>{
+		document.location.href = `${process.env.PUBLIC_URL}/post/${id}`;
+	}
+
+	render(){
+		
 		return(
 			<Provider>
 				<NavBar />
 				<Context.Consumer>
 					{context =>{
-
-						var entry = context.data.map((key,index) =>{
+						var sort = context.data.sort(function(a, b) {
+							a = new Date(a.date);
+							b = new Date(b.date);
+							return a>b ? -1 : a<b ? 1 : 0;
+						});
+						var entry = sort.map((key,index) =>{
+							var obj = JSON.parse(key.content);
 							var date = new Date(key.date).toLocaleDateString('es-ES',{
 								month: 'long',
 								day: 'numeric'
 							});
-
-							var banner = key.content.split('\n').map((url, index) => {
-								if (url.startsWith('!')) {
-									var expression = /[-a-zA-Z0-9@:%_.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_.~#?&//=]*)?/gi;
-									var regex = new RegExp(expression);
-									var nurl = url.match(regex);
-									console.log(nurl[0])
-									return (
-										<img alt="banner" onClick={() => {
-											this.setState({
-												selected: key.content
-											})
-										}} src={nurl[0]} key={index} />
-									);
-								}
-							})
-							var lines = key.content.split('\n');
-							if(lines[0].startsWith('#')){
-								return(
-									<div className="obj shadow">
+							return(
+								<div className="obj shadow" key={index}>
 										<div>
 											<div style={{cursor: 'pointer'}}className="header" onClick={() =>{
-													this.setState({
-														selected: key.content
-													})
+													this.redirectNews(key.id)
 												}}>
-												<p>{"Por KiritoDev"}
+												<p>{"Por "+obj.author}
 													<span className="hide-img" style={{ float: 'right' }}>{date}</span>
 												</p>
 											</div>
 											<div className="banner">
-												{banner}
+											<img alt="banner" onClick={() => {
+												this.redirectNews(key.id)
+											}} src={obj.banner} />
 											</div>
 											<div className="body">
-												<p className="title">{lines[0].replace('#', '').trim()}</p>
+												<p className="title">{obj.title}</p>
 												<hr className="hr" />
 												<div className="footer">
 													<a href="https://www.twitch.tv/mariome">
@@ -88,43 +80,32 @@ class News extends Component{
 											</div>
 										</div>
 									</div>
-								);
-							}
+							)
 						})
 						if(this.state.loading){
 							return (
-								<div className="loading">
-									<img className="centered" alt="" src={Loading} width="150"/>
-								</div>
+								<div className="bgstar">
+									<div id='stars'></div>
+									<div id='stars2'></div>
+									<div id='stars3'></div>
+									<div id='title'>
+										<span className="saving">Loading <span>o</span><span>w</span><span>o</span></span>
+									</div>										
+								</div>								
 							);
 						}else{
-							if(this.state.selected != ""){
-								return(
-									<div>			
-										<button onClick={() =>{
-										   this.setState({
-												selected: ""
-											})
-										}} className="Button">{"Back to news"}</button>
-										<div className="article">
-											<ReactMarkdown className="content" escapeHtml={false} skipHtml={false} source={this.state.selected} />
+							return (
+								<div>
+									<NavBar/>								
+									<div className="modules">
+										<div className="module">
+											<div className="news"> 
+												{entry}									
+											</div>	
 										</div>
-									</div>    
-								)
-							}else{
-								return (
-									<div>
-										<NavBar/>								
-										<div className="modules">
-											<div className="module">
-												<div className="news"> 
-													{entry}									
-												</div>	
-											</div>
-										</div>	
-									</div>
-								)
-							}	
+									</div>	
+								</div>
+							)	
 						}											
 					}}
 				</Context.Consumer>
@@ -134,3 +115,11 @@ class News extends Component{
 }
 
 export default News;
+
+/*
+<div className="loading">
+										{
+											<img className="centered" alt="" src={Loading} width="150"/>
+										}
+									</div>
+*/

@@ -3,7 +3,7 @@ import "./LoginModal.scss"
 import "./UserConfigModal.scss"
 import properties from "../Properties"
 import CookieController from "../../util/cookie.controller";
-import Logo from '../NavBar/assets/Logo-Alt.png'
+import Logo from '../Assets/Logo-Alt.svg'
 import Register from "../Register/Register";
 
 class LoginModal extends React.Component {	
@@ -22,10 +22,11 @@ class LoginModal extends React.Component {
 		}
 		
 		fetch(properties.services.login, params).then(r => r.json()).then(data => {
+			console.log("Response Code: "+data.code)
 			if (data.code === 200) {
 				CookieController.set("user", JSON.stringify({
 					user: data.user.username,
-					avatar: 1
+					avatar: 0
 				}))
 				document.location.href = "/"
 			} else {
@@ -35,7 +36,7 @@ class LoginModal extends React.Component {
 	}	
 	
 	registerModal = () =>{
-		var modal = document.getElementById('myModal');
+		var modal = document.getElementById('register-modal');
 		modal.style.display = "block";
 	}
 
@@ -45,13 +46,29 @@ class LoginModal extends React.Component {
 	}
 	
 	componentDidMount(){
-		var modal = document.getElementById('myModal');
-		window.onclick = function(event) {
-			if (event.target == modal) {
+		var modal = document.getElementById('register-modal');
+		window.onclick = (event) => {
+			if (event.target === modal) {
 				modal.style.display = "none";
 			}
-		}		
+		}
+		var close = document.getElementById('close-span');
+		window.onclick = (event) => {
+			if (event.target === close) {
+				modal.style.display = "none";
+			}
+		}   
+		window.onpopstate = this.onBackButtonEvent;
+		window.onpopstate = null;
 	}
+
+	onBackButtonEvent = (e) => {
+		e.preventDefault();		
+		document.history.replaceState(null, document.title, document.location.pathname);
+		var modal = document.getElementById('register-modal');
+		modal.style.display = "none";
+	}
+	  
 
 	render() {
 		var toRender = this.props.isLogged ?
@@ -64,23 +81,23 @@ class LoginModal extends React.Component {
 		</div>) :
 		(
 			<div>
-				<div id="myModal" class="modal">
-					<div class="modal-content">
+				<div id="register-modal" className="register-modal">
+					<div className="modal-content">
 						<Register/>
 					</div>
 				</div>
-				<div className="loginModal">			
+				<div className="loginModal cw">
 					<img className="logo-img" alt="" src={Logo} width="128"/>
-						<form onSubmit={this.sendLogin}>
-							<input type="text" placeholder="Usuario" name="username"/>
-							<input type="password" placeholder="Contraseña" name="password"/>
-							<input type="submit" value="Ingresar"/>
-						</form>
-						<div className="or">
-	  						<span>
-    							o
-  							</span>
-						</div>					
+					<form onSubmit={this.sendLogin}>
+						<input type="text" placeholder="Usuario" name="username"/>
+						<input type="password" placeholder="Contraseña" name="password"/>
+						<input type="submit" value="Ingresar"/>
+					</form>
+					<div className="or">
+	  					<span>
+    						o
+  						</span>
+					</div>					
 					<button className="social" onClick={this.registerModal}>Registrate</button>
 				</div>
 			</div>

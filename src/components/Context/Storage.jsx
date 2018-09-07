@@ -1,40 +1,39 @@
 import React, { Component } from 'react'
 import { Dropbox } from "dropbox"
+import properties from '../Properties';
 
 const Context = React.createContext();
 
-class Provider extends React.Component {
+class Provider extends Component {
 
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			dropboxToken: "oUhHgt2EauAAAAAAAAAAIL7ZT6g3MU5cUjwau-ZdbEnKVzPNM8-z8UU_G2NTYlgV",
+			dropboxToken: properties.services.dropbox,
 			news: []
 		}
 
 		var dbx = new Dropbox({ accessToken: this.state.dropboxToken });
-
-		// Éste es el metodo de llenado, no se que hagas con el, pero (all) es la variable que trae toda la data
-
+		
 		this.dropboxFileData(dbx)
 			.then(all => {
 				this.setState({
 					news: all
 				})
-			})
+			})			
 	}
 
 	dropboxFileData = (dbx) => {
-		return new Promise((resolve, reject) => {
-			dbx.filesListFolder({ path: "/Noticias" })
+		return new Promise((resolve, reject) => {			
+			dbx.filesListFolder({ path: "/SGNews" })
 			.then(response => {
 				return new Promise((resolve, reject) => {
 					resolve(response.entries)
 				})
 			}).then((entries) => {
 				let promises = []
-				for (let [index, data] of entries.entries()) {
+				entries.forEach(data => {					
 					promises.push(new Promise((resolve, reject) => {
 						dbx.filesGetTemporaryLink({ path: data.path_display })						
 							.then(json => {		
@@ -44,18 +43,17 @@ class Provider extends React.Component {
 								})
 								.then(text => {
 									resolve({
-										content:    text,
-										date:       json.metadata.client_modified,
-										file_id: json.metadata.id.split(':')[1],
-										path: data.path_display.split('/')[2].split('.md')[0],
-										owner_id:   json.metadata.sharing_info.modified_by
+										content: text,
+										name: data.name,
+										date: data.server_modified,
+										id: data.rev
 									})
 								})
 							})
-						}))
-					}
-					resolve(Promise.all(promises))
-				})
+						}))		
+				});
+				resolve(Promise.all(promises))
+			})
 		})
 	}
 
