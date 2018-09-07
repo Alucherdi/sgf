@@ -122,79 +122,6 @@ class Alliances extends React.Component {
 		return (
 			<React.Fragment>
 
-			<BrowserView>
-			<div className="nav">
-				<NavBar />
-			</div>
-
-			<div className="bgstar">
-				<div id='stars'></div>
-				<div id='stars2'></div>
-				<div id='stars3'></div>
-
-				<div className="main" id="mainDiv">
-
-					<div className="moonDiv" id="moonDiv">
-						<img className="moon" src={SG_Moon}/>
-					</div>
-
-					<div id="noText" onClick={this.blankInfo}>		
-					</div>
-
-					<div className="alliesSatellites">
-						<img className="satellite_arena" src={SG_Satellite} onClick={this.arenaInfo} />
-						<img className="satellite_gamelta" src={SG_Satellite} onClick={this.gameltaInfo} />
-						<img className="satellite_gameplanet" src={SG_Satellite} onClick={this.gameplanetInfo} />
-						<img className="satellite_spaceGaming" src={SG_Satellite} onClick={this.spaceGamingInfo} />
-						
-
-						{/*<img className="logo_arena" src={LogoArena}  />
-						<img className="logo_gamelta" src={LogoGamelta}  />
-						<img className="logo_gameplanet" src={LogoGamePlanet}  />
-						<img className="logo_spaceGaming" src={LogoSpaceGaming}  /> */}
-						
-					</div>
-
-					<div className="container" id="divinfo">
-								<img className="textbox" src={Cuadro} />
-								<img className="logoallie" id="logoAliado" />
-								<div className="text" id="textinfo"></div>
-					</div>
-				</div>
-
-			</div>
-
-			{/*<div className="main" id="mainDiv">
-
-				<div className="moonDiv" id="moonDiv">
-					<img className="moon" src={SG_Moon}/>
-				</div>
-
-				<div className="alliesFlags">
-					<img className="flag_arena" src={SG_Flag} />
-					<img className="flag_gamelta" src={SG_Flag} />
-					<img className="flag_gameplanet" src={SG_Flag} />
-					<img className="flag_riot" src={SG_Flag} />
-					<img className="flag_rocket9" src={SG_Flag} />
-					<img className="flag_xbox" src={SG_Flag} />
-
-					<img className="logo_arena" src={LogoArena} onClick={this.arenaInfo} />
-					<img className="logo_gamelta" src={LogoGamelta} onClick={this.gameltaInfo} />
-					<img className="logo_gameplanet" src={LogoGamePlanet} onClick={this.gameplanetInfo} />
-					<img className="logo_riot" src={LogoRiot} onClick={this.riotInfo} />
-					<img className="logo_rocket9" src={LogoRocket9} onClick={this.rocket9Info} />
-					<img className="logo_xbox" src={LogoXbox} onClick={this.xboxInfo} />
-				</div>
-
-				<div className="container" id="divinfo">
-							<img className="textbox" src={Cuadro} />
-							<img className="logoallie" id="logoAliado" />
-							<div className="text" id="textinfo"></div>
-				</div>
-
-			</div>*/}
-			</BrowserView>
-
 			<MobileView>
 			<div className="nav">
 				<NavBar />
@@ -236,37 +163,50 @@ class Alliances extends React.Component {
 				</div>
 
 			</div>
-
-			{/*<div className="main" id="mainDiv">
-
-				<div className="moonDiv" id="moonDiv">
-					<img className="moon" src={SG_Moon}/>
-				</div>
-
-				<div className="alliesFlags">
-					<img className="flag_arena" src={SG_Flag} />
-					<img className="flag_gamelta" src={SG_Flag} />
-					<img className="flag_gameplanet" src={SG_Flag} />
-					<img className="flag_riot" src={SG_Flag} />
-					<img className="flag_rocket9" src={SG_Flag} />
-					<img className="flag_xbox" src={SG_Flag} />
-
-					<img className="logo_arena" src={LogoArena} onClick={this.arenaInfo} />
-					<img className="logo_gamelta" src={LogoGamelta} onClick={this.gameltaInfo} />
-					<img className="logo_gameplanet" src={LogoGamePlanet} onClick={this.gameplanetInfo} />
-					<img className="logo_riot" src={LogoRiot} onClick={this.riotInfo} />
-					<img className="logo_rocket9" src={LogoRocket9} onClick={this.rocket9Info} />
-					<img className="logo_xbox" src={LogoXbox} onClick={this.xboxInfo} />
-				</div>
-
-				<div className="container" id="divinfo">
-							<img className="textbox" src={Cuadro} />
-							<img className="logoallie" id="logoAliado" />
-							<div className="text" id="textinfo"></div>
-				</div>
-
-			</div>*/}
 			</MobileView>
+
+			<BrowserView>
+			<div className="nav">
+				<NavBar />
+			</div>
+
+			<div className="bgstar">
+				<div id='stars'></div>
+				<div id='stars2'></div>
+				<div id='stars3'></div>
+
+				<div className="main" id="mainDiv">
+
+					<div className="moonDiv" id="moonDiv">
+						<img className="moon" src={SG_Moon}/>
+					</div>
+
+					<div id="noText" onClick={this.blankInfo}>		
+					</div>
+
+					<div className="alliesSatellites">
+						<img className="satellite_arena" src={SG_Satellite} onClick={this.arenaInfo} />
+						<img className="satellite_gamelta" src={SG_Satellite} onClick={this.gameltaInfo} />
+						<img className="satellite_gameplanet" src={SG_Satellite} onClick={this.gameplanetInfo} />
+						<img className="satellite_spaceGaming" src={SG_Satellite} onClick={this.spaceGamingInfo} />
+						
+
+						{/*<img className="logo_arena" src={LogoArena}  />
+						<img className="logo_gamelta" src={LogoGamelta}  />
+						<img className="logo_gameplanet" src={LogoGamePlanet}  />
+						<img className="logo_spaceGaming" src={LogoSpaceGaming}  /> */}
+						
+					</div>
+
+					<div className="container" id="divinfo">
+								<img className="textbox" src={Cuadro} />
+								<img className="logoallie" id="logoAliado" />
+								<div className="text" id="textinfo"></div>
+					</div>
+				</div>
+
+			</div>
+			</BrowserView>
 
 			</React.Fragment>
 		)

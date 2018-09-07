@@ -92,11 +92,14 @@ class AxtelForm extends React.Component {
 		return (
 			<div>
 				<NavBar />
+				<div className="axtelbase">
 				<div className="axtelForm">
 					<div className="left" onClick={() => {this.navigate(-1)}}>
 						<img src={leftImage} alt=""/>
 					</div>
-					{this.state.views[this.state.actualView]}
+					<div className="view">
+						{this.state.views[this.state.actualView]}
+					</div>
 					<div className="right" onClick={() => {this.navigate(1)}}>
 						<img src={rightImage} alt=""/>
 					</div>
@@ -113,6 +116,7 @@ class AxtelForm extends React.Component {
 						</div> : 
 					""}
 					
+				</div>
 				</div>
 			</div>
 		)

@@ -2,13 +2,17 @@ import React from "react"
 import { Timeline } from "react-twitter-widgets"
 import NavBar from "../NavBar/NavBar.jsx"
 import "./Home.scss"
+import Carousel  from "../Carousel/Carousel";
 
 class Home extends React.Component {
 	render() {
 		return (
-			<div className="home">				
-				<div className="modules">
-					<div className="module">						
+			<div className="home">						
+				<div className="modules">					
+					<div className="module">
+						<div className="carousel">
+							<Carousel/>					
+						</div>
 						<div className="blogspot">
 							{this.blogspot().map((blog) => {
 								return blog
@@ -29,7 +33,7 @@ class Home extends React.Component {
 						/>
 					</div>
 				</div>
-				<NavBar/>				
+				<NavBar/>						
 			</div>
 		)
 	}
@@ -46,7 +50,7 @@ class Home extends React.Component {
 	blogspot = () => {		
 		var m = []
 		m.push(				
-			<div className="blogspot_entry shadow">
+			<div className="blogspot_entry shadow" key={0}>
 				<img src="http://www.borntoplay.es/wp-content/uploads/2018/01/supernintendo-snes-nintendo-retro-videojuegos-snes-mini-borntoplay.jpg" alt="" className="blogspot_image"/>
 				<h1>RETRO: EL PASADO ES PARTE DEL FUTURO</h1>
 				<p>
@@ -57,7 +61,7 @@ class Home extends React.Component {
 			</div>
 		)		
 		m.push(				
-			<div className="blogspot_entry shadow">
+			<div className="blogspot_entry shadow" key={1}>
 				<img src="http://www.borntoplay.es/wp-content/uploads/2018/04/videojuegos-reportajes-videojuegos-2018-partidas-memoria-videjuegos-consolas-nueva-generaci%C3%B3n-sony-microsoft-PS5.jpg" alt="" className="blogspot_image"/>
 				<h1>RELATO: LA PARTIDA PERDIDA</h1>
 				<p>
@@ -68,7 +72,7 @@ class Home extends React.Component {
 			</div>
 		)	
 		m.push(				
-			<div className="blogspot_entry shadow">
+			<div className="blogspot_entry shadow" key={2}>
 				<img src="http://www.borntoplay.es/wp-content/uploads/2018/03/dukenukem3d-3D-realms-retro-juegos-retro-shooters-clasicos-videojuegos-antiguos-1.jpg" alt="" className="blogspot_image"/>
 				<h1>I LOVE: DUKE NUKEM 3DA</h1>
 				<p>
@@ -78,7 +82,7 @@ class Home extends React.Component {
 			</div>
 		)		
 		m.push(				
-			<div className="blogspot_entry shadow">
+			<div className="blogspot_entry shadow" key={3}>
 				<img src="http://www.borntoplay.es/wp-content/uploads/2018/03/videojuegos-online-ios-android-videojuegos-smartphones-tablets-borntoplay.jpg" alt="" className="blogspot_image"/>
 				<h1>VIDEOJUEGOS PARA TODOS</h1>
 				<p>
@@ -88,7 +92,7 @@ class Home extends React.Component {
 			</div>
 		)		
 		m.push(				
-			<div className="blogspot_entry shadow">
+			<div className="blogspot_entry shadow" key={4}>
 				<img src="http://www.borntoplay.es/wp-content/uploads/2017/11/quake-3-arena-videojuegos-id-software-ciber-multijugadores-online-juegos-adelantados-a-su-tiempo-sarge.jpg" alt="" className="blogspot_image"/>
 				<h1>I LOVE: QUAKE III ARENA</h1>
 				<p>

@@ -1,0 +1,102 @@
+@font-face {
+    font-family: 'Argumentum';
+    src: url('../Assets/Argumentum/Medium.ttf');
+}
+
+.article{
+    margin-left: 100px;
+    .banner{
+        width: 100%;
+        img{
+            width: 100%;
+        }
+    }
+    .a-title{
+        font-family: 'Argumentum';
+        font-size: 30pt;
+        font-weight: bold;
+        margin-bottom: 0;
+    }
+
+    .author{
+        margin-top: 20px;
+        font-family: 'Argumentum';
+        font-size: 20pt;
+        font-weight: bold;
+    }
+
+    .header{
+        margin-left: auto;
+        word-wrap: break-word;
+        margin-right: auto;    
+        margin-top: 2%;
+        font-family: 'Argumentum';
+        font-size: 35px;
+    }
+    .content{
+        width: 80%;    
+        margin-left: auto;
+        margin-right: auto;    
+        font-family: 'Argumentum';
+        color: black;  
+        margin-top: -10px;
+        font-size: 18px;
+    }
+    .info{
+        font-family: 'Argumentum'; 
+        font-size: 13px;
+        color: rgb(102, 102, 102);
+        width: 550px;
+        margin-left: auto;
+        word-wrap: break-word;
+        margin-right: auto;
+        margin-top: -20px;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+    .rds{
+        font-family: 'Argumentum';
+        font-size: 13px;
+        color: rgb(102, 102, 102);
+        width: 550px;
+        margin-left: auto;
+        word-wrap: break-word;
+        margin-right: auto;
+        margin-top: 36px;  
+        margin-bottom: -40px;
+        font-weight: bold;
+    }
+    img{
+        max-width: 700px;        
+    }
+    
+}
+
+.title{
+    font-family: 'Argumentum';
+    font-size: 45px;
+    font-weight: bold;
+    text-align: center;
+    hr{        
+        width: 80%;
+        margin-top: 30px;
+        margin-bottom: 60px;
+        margin-left: 5%;     
+        display: block;
+        margin-left: auto;
+        margin-right: auto
+    }
+    a:link {
+        color: black;
+        text-decoration: none;
+    }
+    a:visited {
+        color: black;
+        text-decoration: none;
+    }
+    
+    a:hover {
+        color: rgb(123, 123, 123);
+        text-decoration: none;
+    }
+}

@@ -1,5 +1,6 @@
 'use strict';
 
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
@@ -96,6 +97,11 @@ module.exports = {
 			// please link the files into your node_modules/ and let module-resolution kick in.
 			// Make sure your source files are compiled, as they will not be processed in any way.
 			new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
+			new webpack.ProvidePlugin({
+				$: 'jquery',
+				jQuery: 'jquery',
+				'window.jQuery': 'jquery'
+			}),
 		],
 	},
 	module: {
@@ -275,6 +281,12 @@ module.exports = {
 		// https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
 		// You can remove this if you don't use Moment.js:
 		new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+		new MonacoWebpackPlugin(),
+		new webpack.ProvidePlugin({
+			$: 'jquery',
+			jQuery: 'jquery',
+			'window.jQuery': 'jquery'
+		}),
 	],
 	// Some libraries import Node modules but don't use them in the browser.
 	// Tell Webpack to provide empty mocks for them so importing them works.

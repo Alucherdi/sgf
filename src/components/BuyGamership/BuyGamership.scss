@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300');
+
+$font: 'Roboto Condensed', sans-serif;
+$max-size: 500px;
+
+.buy-container{
+    display: flex;
+    box-sizing: border-box;
+    background: #F2F2F2;
+    flex-wrap: wrap;
+    justify-content: center;
+    .buy-gamership{
+        width: 75%;
+        height: calc(100vh - 60px);
+        overflow: hidden;
+        box-shadow: 1px 0px 12px 0px rgba(0,0,0,0.32);
+
+        @media screen and (max-width: $max-size) {
+            width: 100% !important;
+            overflow: scroll;
+        }
+
+        .buy-title{
+            display: grid;        
+            text-align: center;
+            margin-bottom: 30px;
+            .title{                        
+                font-family: $font;
+                font-size: 26pt;
+                margin-top: 50px;
+                font-weight: normal;
+                @media screen and (max-width: $max-size) {
+                    font-size: 22pt !important;
+                }
+            }
+        }
+        .buy-main{
+            display: flex;
+            flex-direction: row;    
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 100%;
+            height: calc(100vh - 60px);
+            @media screen and (max-width: $max-size) {
+                height: 50vh !important;
+            }
+        }
+    }
+    .buy-info{
+        width: 25%;        
+        display: grid;
+        @media screen and (max-width: $max-size) {
+            width: 100% !important;            
+        }
+        .title{
+            text-align: center;
+            font-family: $font;
+            font-size: 20pt;
+            margin-top: 50px;
+            font-weight: normal;            
+        }
+        .features{            
+            .feature-list{
+                height: 80%;
+                list-style-image: url('https://www.scdn.co/i/home/plan-checklist.svg');
+                margin-left: 20px;            
+                li{
+                    font-family: $font;
+                    font-size: 16pt;
+                    padding: 0 0 7px 12px;
+                    line-height: 22px;
+                }                
+            }            
+        }
+        .pay{
+            margin: auto;
+            height: 40px;
+            width: 80%;
+            background-color: rgb(255, 136, 0);
+            color: white;  
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            font-family: $font;
+            font-size: 14px;
+            &:hover{
+                background-color: rgb(212, 113, 0);
+            }
+        }
+    }
+}
+
+.buy-box{
+    margin: 30px;
+    @media screen and (max-width: $max-size) {
+        margin: 4px !important;
+    }
+    .buy-plane{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 220px;
+        height: 220px;
+        transition: linear transform 0.15s;
+        cursor: pointer;
+        &:hover{
+            transform: scale(1.08)
+        }
+        @media screen and (max-width: $max-size) {
+            width: 160px !important;
+            height: 160px !important;
+            &:hover{
+                transform: scale(1) !important;
+            }
+        }
+        .buy-month{                
+            height: 70%;
+            text-align: center;                
+            .monthText{
+                font-weight: bold;
+                font-size: 90pt;
+                line-height: 1;
+                @media screen and (max-width: $max-size) {
+                    font-size: 60pt !important;
+                }
+                .monthTitle{
+                    display: block;
+                    font-weight: normal;
+                    font-size: 20pt;                    
+                }
+            }                
+        }
+        .buy-price{            
+            height: 20%;
+            .price{
+                display: block;
+                font-size: 15pt;
+                margin: 16px;
+                @media screen and (max-width: $max-size) {
+                    margin: 12px !important;
+                    font-size: 12pt !important;
+                }
+            }
+        }
+    }
+}
